@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+  <id>VirtoCommerce.AdminAngularJs</id>
+  <version>3.1090.0</version>
+  <version-tag></version-tag>
+
+  <platformVersion>3.1090.0</platformVersion>
+  <dependencies>
+    <!--<dependency id="VirtoCommerce.Core" version="3.1012.0" />-->
+  </dependencies>
+
+  <title>Virto Commerce Admin Angular JS</title>
+  <description>Virto Commerce Admin Angular JS</description>
+
+  <authors>
+    <author>Oleg Zhuk</author>
+  </authors>
+  <owners>
+    <owner>Virto Commerce</owner>
+  </owners>
+
+  <projectUrl>https://github.com/Virto Commerce/vc-module-admin-angular-js</projectUrl>
+  <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/Content/logo.png</iconUrl>
+  <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+  <assemblyFile>VirtoCommerce.AdminAngularJs.Web.dll</assemblyFile>
+  <moduleType>VirtoCommerce.AdminAngularJs.Web.Module, VirtoCommerce.AdminAngularJs.Web</moduleType>
+
+  <releaseNotes>First version.</releaseNotes>
+  <copyright>Copyright © 2026 Virto Commerce. All rights reserved</copyright>
+  <tags>extension module</tags>
+  <useFullTypeNameInSwagger>false</useFullTypeNameInSwagger>
+</module>
