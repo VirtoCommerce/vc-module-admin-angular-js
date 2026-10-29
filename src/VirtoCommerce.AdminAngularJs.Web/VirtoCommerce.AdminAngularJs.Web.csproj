@@ -8,21 +8,24 @@
     <NoWarn>1591;NU1608</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="dist\**" />
-    <Content Remove="dist\**" />
-    <EmbeddedResource Remove="dist\**" />
-    <None Remove="dist\**" />
+    <Compile Remove="node_modules\**" />
+    <Content Remove="node_modules\**" />
+    <EmbeddedResource Remove="node_modules\**" />
+    <None Remove="node_modules\**" />
   </ItemGroup>
   <ItemGroup>
+    <!-- The admin SPA (sources, styles, images and the webpack output in Content\wwwroot\dist) ships as module content, not as part of the assembly -->
+    <Content Update="Content\**">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
     <Content Update="Localizations\**">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+    <Content Update="package.json;npm-shrinkwrap.json">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VirtoCommerce.AdminAngularJs.Core\VirtoCommerce.AdminAngularJs.Core.csproj" />
-    <ProjectReference Include="..\VirtoCommerce.AdminAngularJs.Data\VirtoCommerce.AdminAngularJs.Data.csproj" />
-    <ProjectReference Include="..\VirtoCommerce.AdminAngularJs.Data.MySql\VirtoCommerce.AdminAngularJs.Data.MySql.csproj" />
-    <ProjectReference Include="..\VirtoCommerce.AdminAngularJs.Data.PostgreSql\VirtoCommerce.AdminAngularJs.Data.PostgreSql.csproj" />
-    <ProjectReference Include="..\VirtoCommerce.AdminAngularJs.Data.SqlServer\VirtoCommerce.AdminAngularJs.Data.SqlServer.csproj" />
+    <PackageReference Include="VirtoCommerce.Platform.Core" Version="3.1093.0" />
   </ItemGroup>
 </Project>
