@@ -12,8 +12,9 @@ namespace VirtoCommerce.AdminAngularJs.Web.Controllers;
 
 /// <summary>
 /// Serves the AngularJS admin page at "/". The platform routes "/" here when this admin UI owns the site root
-/// (VirtoCommerce:PlatformUI:RootApp), and "/apps/platform/" in any case: it mounts that path as the path base, so the
-/// page and every URL relative to it work there too.
+/// (VirtoCommerce:PlatformUI:RootApp), and "/apps/platform/" in any case: requests under that path reach the platform as
+/// if they came to the site root, and the page's base href keeps the browser on /apps/platform/ for its relative URLs.
+/// GET and HEAD, as "/" is what load balancers probe.
 /// </summary>
 [ApiExplorerSettings(IgnoreApi = true)]
 public class AdminAngularJsController(IOptions<PlatformUIOptions> platformUIOptions, IAdminUIContextProvider contextProvider) : Controller
@@ -24,7 +25,7 @@ public class AdminAngularJsController(IOptions<PlatformUIOptions> platformUIOpti
         DateTimeZoneHandling = DateTimeZoneHandling.Utc,
     };
 
-    [HttpGet("/")]
+    [AcceptVerbs("GET", "HEAD", Route = "/")]
     [AdminUIPage(Module.AppId)]
     [AllowAnonymous]
     public async Task<ActionResult> Index()
@@ -36,8 +37,11 @@ public class AdminAngularJsController(IOptions<PlatformUIOptions> platformUIOpti
 
         var context = await contextProvider.GetContextAsync(HttpContext.RequestAborted);
 
+        var mountPath = HttpContext.Features.Get<AdminUIRequestFeature>()?.MountPath;
+
         var model = new AdminAngularJsIndexModel
         {
+            BaseHref = $"{Request.PathBase}{mountPath}/",
             PlatformVersion = new HtmlString(context.PlatformVersion),
             DemoCredentials = new HtmlString(string.IsNullOrEmpty(context.DemoCredentials) ? "''" : context.DemoCredentials),
             DemoResetTime = new HtmlString(context.DemoResetTime.HasValue ? ToJavaScript(context.DemoResetTime.Value) : "''"),

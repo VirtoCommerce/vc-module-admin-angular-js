@@ -12,14 +12,14 @@ namespace VirtoCommerce.AdminAngularJs.Tests;
 [Trait("Category", "Unit")]
 public sealed class ModuleTests : IDisposable
 {
-    private readonly string _root = Path.Combine(Path.GetTempPath(), "admin-ui-tests-" + Guid.NewGuid().ToString("N"));
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "admin-angularjs-tests-" + Guid.NewGuid().ToString("N"));
     private readonly string _platformWebRoot;
     private readonly string _moduleRoot;
 
     public ModuleTests()
     {
         _platformWebRoot = Directory.CreateDirectory(Path.Combine(_root, "platform", "wwwroot")).FullName;
-        _moduleRoot = Directory.CreateDirectory(Path.Combine(_root, "modules", "VirtoCommerce.AdminUI")).FullName;
+        _moduleRoot = Directory.CreateDirectory(Path.Combine(_root, "modules", "VirtoCommerce.AdminAngularJs")).FullName;
     }
 
     [Fact]

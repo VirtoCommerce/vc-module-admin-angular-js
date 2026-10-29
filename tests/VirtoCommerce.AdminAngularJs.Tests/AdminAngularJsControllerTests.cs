@@ -71,11 +71,31 @@ public class AdminAngularJsControllerTests
         Assert.False(model.SendDiagnosticData);
     }
 
-    private static AdminAngularJsController CreateController(AdminUIContext context, bool enable = true)
+    [Theory]
+    [InlineData("", null, "/")]
+    [InlineData("", "/apps/platform", "/apps/platform/")]
+    [InlineData("/vc", "/apps/platform", "/vc/apps/platform/")]
+    [InlineData("/vc", null, "/vc/")]
+    public async Task Index_BaseHref_FollowsThePathBaseAndTheMountPath(string pathBase, string mountPath, string expected)
+    {
+        var httpContext = new DefaultHttpContext();
+        httpContext.Request.PathBase = pathBase;
+        if (mountPath != null)
+        {
+            httpContext.Features.Set(new AdminUIRequestFeature(Web.Module.AppId, mountPath));
+        }
+        var controller = CreateController(new AdminUIContext(), httpContext: httpContext);
+
+        var model = GetModel(await controller.Index());
+
+        Assert.Equal(expected, model.BaseHref);
+    }
+
+    private static AdminAngularJsController CreateController(AdminUIContext context, bool enable = true, HttpContext httpContext = null)
     {
         return new AdminAngularJsController(Options.Create(new PlatformUIOptions { Enable = enable }), new FakeContextProvider(context))
         {
-            ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() },
+            ControllerContext = new ControllerContext { HttpContext = httpContext ?? new DefaultHttpContext() },
         };
     }
 

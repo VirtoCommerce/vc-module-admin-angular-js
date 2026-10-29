@@ -8,6 +8,11 @@ namespace VirtoCommerce.AdminAngularJs.Web.Models;
 /// </summary>
 public class AdminAngularJsIndexModel
 {
+    /// <summary>
+    /// The page's base href: the site root, or /apps/platform/ when the page is served there (relative URLs resolve against it).
+    /// </summary>
+    public string BaseHref { get; set; } = "/";
+
     public HtmlString PlatformVersion { get; set; } = HtmlString.Empty;
     public HtmlString DemoCredentials { get; set; } = new("''");
     public HtmlString DemoResetTime { get; set; } = new("''");
