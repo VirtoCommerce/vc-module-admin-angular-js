@@ -1,45 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Admin (AngularJS)">
-  <title>Admin (AngularJS)</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Admin Shell">
+  <title>Admin Shell</title>
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="92%" y2="100%">
-      <stop offset="0%" stop-color="#5FC8F5"/>
-      <stop offset="100%" stop-color="#265FC6"/>
+      <stop offset="0%" stop-color="#52A8CF"/>
+      <stop offset="100%" stop-color="#3A79A6"/>
     </linearGradient>
     <filter id="lift" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#0B3F66" flood-opacity="0.30"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#1E4A68" flood-opacity="0.32"/>
     </filter>
-    <clipPath id="win"><rect x="18" y="26" width="92" height="76" rx="12"/></clipPath>
+    <clipPath id="win"><rect x="20" y="28" width="88" height="72" rx="13"/></clipPath>
   </defs>
 
   <rect width="128" height="128" rx="28" fill="url(#bg)"/>
 
-  <!-- Glyph: the classic admin window — navy side menu and two blades opened side by side -->
+  <!-- Glyph: admin shell window with menu rail + content -->
   <g filter="url(#lift)">
-    <rect x="18" y="26" width="92" height="76" rx="12" fill="#FFFFFF"/>
+    <rect x="20" y="28" width="88" height="72" rx="13" fill="#FFFFFF"/>
 
     <g clip-path="url(#win)">
-      <!-- side menu -->
-      <rect x="18" y="26" width="19" height="76" fill="#2C3A4E"/>
-      <circle cx="27.5" cy="40" r="3.5" fill="#FFC24D"/>
-      <circle cx="27.5" cy="53" r="3.5" fill="#9FB6CC"/>
-      <circle cx="27.5" cy="66" r="3.5" fill="#9FB6CC"/>
+      <!-- left menu rail -->
+      <rect x="20" y="28" width="27" height="72" fill="#E6EEF5"/>
+      <rect x="47" y="28" width="3" height="72" fill="#000000" opacity="0.045"/>
 
-      <!-- blade 1: list with the selected row -->
-      <rect x="42" y="32" width="31" height="64" rx="5" fill="#EEF4FA"/>
-      <rect x="42" y="32" width="31" height="11" rx="5" fill="#5FC8F5"/>
-      <rect x="42" y="38" width="31" height="5" fill="#5FC8F5"/>
-      <rect x="46" y="49" width="23" height="6" rx="3" fill="#CBD8E6"/>
-      <rect x="46" y="60" width="23" height="7" rx="3.5" fill="#3FD8B4"/>
-      <rect x="46" y="73" width="23" height="6" rx="3" fill="#CBD8E6"/>
-      <rect x="46" y="84" width="16" height="6" rx="3" fill="#CBD8E6"/>
+      <!-- menu items -->
+      <rect x="25" y="38" width="16" height="6" rx="3" fill="#5B9BD5"/>
+      <rect x="25" y="52" width="16" height="6" rx="3" fill="#BFCFDC"/>
+      <rect x="25" y="65" width="16" height="6" rx="3" fill="#BFCFDC"/>
 
-      <!-- blade 2: the opened item's details -->
-      <rect x="77" y="32" width="28" height="64" rx="5" fill="#EEF4FA"/>
-      <rect x="77" y="32" width="28" height="11" rx="5" fill="#265FC6"/>
-      <rect x="77" y="38" width="28" height="5" fill="#265FC6"/>
-      <rect x="81" y="49" width="20" height="6" rx="3" fill="#CBD8E6"/>
-      <rect x="81" y="60" width="20" height="6" rx="3" fill="#CBD8E6"/>
-      <rect x="81" y="83" width="13" height="8" rx="4" fill="#FFC24D"/>
+      <!-- content rows -->
+      <rect x="54" y="37" width="38" height="7" rx="3.5" fill="#6E8CA8"/>
+      <rect x="54" y="52" width="46" height="6" rx="3" fill="#CBD9E6"/>
+      <rect x="54" y="65" width="46" height="6" rx="3" fill="#CBD9E6"/>
+
+      <!-- widget + row -->
+      <rect x="54" y="78" width="13" height="13" rx="3" fill="#F8B93B"/>
+      <rect x="72" y="81.5" width="28" height="6" rx="3" fill="#CBD9E6"/>
     </g>
   </g>
 </svg>

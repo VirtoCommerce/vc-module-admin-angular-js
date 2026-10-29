@@ -26,6 +26,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <!-- The AngularJS admin moved verbatim from vc-platform (src/VirtoCommerce.Platform.Web/wwwroot), where it was existing
+         code; here every file is new to the repository, so code analysis would count the whole legacy SPA as new code.
+         Keep it out of analysis; the module's own C# and tests are analyzed. -->
+    <None Update="Content\wwwroot\**" SonarQubeExclude="true" />
+    <Content Update="Content\wwwroot\**" SonarQubeExclude="true" />
+    <SonarQubeSetting Include="sonar.exclusions">
+      <Value>**/Content/wwwroot/**</Value>
+    </SonarQubeSetting>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="VirtoCommerce.Platform.Core" Version="3.1092.0-alpha.13449-vcst-6338" />
   </ItemGroup>
 </Project>
