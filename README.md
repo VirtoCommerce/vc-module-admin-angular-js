@@ -107,7 +107,7 @@ The bundles are built into `Content/wwwroot/dist`, not `dist`: the platform load
 
 ### REST API
 
-None. The module serves the page at `/` and static files; the values come from the platform's `GET /api/platform/common/ui/context`.
+None. The module serves the page at `/` and static files; the controller reads the values from the platform's `IAdminUIContextProvider` in process (the same values other admin UIs get from `GET /api/platform/common/ui/context`).
 
 ## Build
 
