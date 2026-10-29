@@ -32,7 +32,7 @@
   </owners>
 
   <projectUrl>https://github.com/VirtoCommerce/vc-module-admin-angular-js</projectUrl>
-  <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/Content/logo.png</iconUrl>
+  <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/Content/logo.svg</iconUrl>
   <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
   <assemblyFile>VirtoCommerce.AdminAngularJs.Web.dll</assemblyFile>
