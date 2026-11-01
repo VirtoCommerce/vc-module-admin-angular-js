@@ -10,6 +10,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="10.0.13" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,8 +19,6 @@
     <PackageReference Include="xunit.v3" Version="3.2.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\VirtoCommerce.AdminAngularJs.Core\VirtoCommerce.AdminAngularJs.Core.csproj" />
-    <ProjectReference Include="..\..\src\VirtoCommerce.AdminAngularJs.Data\VirtoCommerce.AdminAngularJs.Data.csproj" />
     <ProjectReference Include="..\..\src\VirtoCommerce.AdminAngularJs.Web\VirtoCommerce.AdminAngularJs.Web.csproj" />
   </ItemGroup>
 </Project>

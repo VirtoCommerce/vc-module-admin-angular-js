@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Admin (AngularJS)">
+  <title>Admin (AngularJS)</title>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="92%" y2="100%">
+      <stop offset="0%" stop-color="#52A8CF"/>
+      <stop offset="100%" stop-color="#3A79A6"/>
+    </linearGradient>
+    <filter id="lift" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#1E4A68" flood-opacity="0.32"/>
+    </filter>
+    <clipPath id="win"><rect x="20" y="28" width="88" height="72" rx="13"/></clipPath>
+  </defs>
+
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+
+  <!-- Glyph: admin shell window with menu rail + content -->
+  <g filter="url(#lift)">
+    <rect x="20" y="28" width="88" height="72" rx="13" fill="#FFFFFF"/>
+
+    <g clip-path="url(#win)">
+      <!-- left menu rail -->
+      <rect x="20" y="28" width="27" height="72" fill="#E6EEF5"/>
+      <rect x="47" y="28" width="3" height="72" fill="#000000" opacity="0.045"/>
+
+      <!-- menu items -->
+      <rect x="25" y="38" width="16" height="6" rx="3" fill="#5B9BD5"/>
+      <rect x="25" y="52" width="16" height="6" rx="3" fill="#BFCFDC"/>
+      <rect x="25" y="65" width="16" height="6" rx="3" fill="#BFCFDC"/>
+
+      <!-- content rows -->
+      <rect x="54" y="37" width="38" height="7" rx="3.5" fill="#6E8CA8"/>
+      <rect x="54" y="52" width="46" height="6" rx="3" fill="#CBD9E6"/>
+      <rect x="54" y="65" width="46" height="6" rx="3" fill="#CBD9E6"/>
+
+      <!-- widget + row -->
+      <rect x="54" y="78" width="13" height="13" rx="3" fill="#F8B93B"/>
+      <rect x="72" y="81.5" width="28" height="6" rx="3" fill="#CBD9E6"/>
+    </g>
+  </g>
+</svg>

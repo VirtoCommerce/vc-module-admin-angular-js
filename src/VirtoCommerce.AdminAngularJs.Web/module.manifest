@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <module>
   <id>VirtoCommerce.AdminAngularJs</id>
-  <version>3.1090.0</version>
+  <version>3.1092.0</version>
   <version-tag></version-tag>
 
-  <platformVersion>3.1090.0</platformVersion>
-  <dependencies>
-    <!--<dependency id="VirtoCommerce.Core" version="3.1012.0" />-->
-  </dependencies>
+  <platformVersion>3.1092.0</platformVersion>
+  <dependencies />
 
-  <title>Virto Commerce Admin Angular JS</title>
-  <description>Virto Commerce Admin Angular JS</description>
+  <apps>
+    <!-- "platform": the app id the AngularJS admin always had; modules' AngularJS bundles are its plugins (api/apps/platform/manifest).
+         adminUI: it can own the site root; the module maps the page itself (hosting="Endpoint"), and the platform also
+         serves it at /apps/platform/. Platforms before 3.1093.0 ignore the element. -->
+    <app id="platform">
+      <title>Commerce Manager</title>
+      <description>Virto Commerce Platform</description>
+      <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/logo.svg</iconUrl>
+      <contentPath>Content/wwwroot</contentPath>
+      <placement>AppMenu</placement>
+      <adminUI priority="100" hosting="Endpoint" />
+    </app>
+  </apps>
+
+  <title>Admin Angular JS</title>
+  <description>The AngularJS back office (Commerce Manager) for the Virto Commerce Platform. Without an admin UI module the platform runs API only.</description>
 
   <authors>
     <author>Oleg Zhuk</author>
@@ -19,15 +31,19 @@
     <owner>Virto Commerce</owner>
   </owners>
 
-  <projectUrl>https://github.com/Virto Commerce/vc-module-admin-angular-js</projectUrl>
-  <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/Content/logo.png</iconUrl>
+  <groups>
+    <group>commerce</group>
+  </groups>
+
+  <projectUrl>https://github.com/VirtoCommerce/vc-module-admin-angular-js</projectUrl>
+  <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/Content/logo.svg</iconUrl>
   <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
   <assemblyFile>VirtoCommerce.AdminAngularJs.Web.dll</assemblyFile>
   <moduleType>VirtoCommerce.AdminAngularJs.Web.Module, VirtoCommerce.AdminAngularJs.Web</moduleType>
 
-  <releaseNotes>First version.</releaseNotes>
+  <releaseNotes>First version. The AngularJS admin moved out of the platform into this module.</releaseNotes>
   <copyright>Copyright © 2026 Virto Commerce. All rights reserved</copyright>
-  <tags>extension module</tags>
+  <tags>admin ui angularjs back-office</tags>
   <useFullTypeNameInSwagger>false</useFullTypeNameInSwagger>
 </module>

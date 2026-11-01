@@ -337,3 +337,7 @@ ASALocalRun/
 .nuke
 dist/
 **/Properties/launchSettings.json
+
+# Admin SPA: vendored library builds and assets that the generic patterns above would hide
+!src/VirtoCommerce.AdminAngularJs.Web/Content/wwwroot/vendor/ng-context-menu/dist/
+!src/VirtoCommerce.AdminAngularJs.Web/Content/wwwroot/images/Assets.zip
