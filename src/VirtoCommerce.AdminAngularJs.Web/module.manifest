@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <module>
   <id>VirtoCommerce.AdminAngularJs</id>
-  <version>3.1090.0</version>
+  <version>3.1092.0</version>
   <version-tag></version-tag>
 
-  <platformVersion>3.1092.0-alpha.13449-vcst-6338</platformVersion>
+  <platformVersion>3.1092.0</platformVersion>
   <dependencies />
 
   <apps>
@@ -14,14 +14,14 @@
     <app id="platform">
       <title>Commerce Manager</title>
       <description>Virto Commerce Platform</description>
-      <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/Content/wwwroot/images/platform_app.svg</iconUrl>
+      <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/logo.svg</iconUrl>
       <contentPath>Content/wwwroot</contentPath>
       <placement>AppMenu</placement>
       <adminUI priority="100" hosting="Endpoint" />
     </app>
   </apps>
 
-  <title>Virto Commerce Admin Angular JS</title>
+  <title>Admin Angular JS</title>
   <description>The AngularJS back office (Commerce Manager) for the Virto Commerce Platform. Without an admin UI module the platform runs API only.</description>
 
   <authors>
