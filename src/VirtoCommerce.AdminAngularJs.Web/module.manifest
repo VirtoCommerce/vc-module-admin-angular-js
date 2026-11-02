@@ -14,7 +14,7 @@
     <app id="platform">
       <title>Commerce Manager</title>
       <description>Virto Commerce Platform</description>
-      <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/logo.svg</iconUrl>
+      <iconUrl>Modules/$(VirtoCommerce.AdminAngularJs)/Content/logo.svg</iconUrl>
       <contentPath>Content/wwwroot</contentPath>
       <placement>AppMenu</placement>
       <adminUI priority="100" hosting="Endpoint" />
