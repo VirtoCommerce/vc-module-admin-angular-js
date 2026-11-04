@@ -239,6 +239,9 @@ angular.module('platformWebApp')
             $state.go('loginDialog');
         }
 
+        // Initialize the model object up front: the current-password input sits inside an ng-if (child scope),
+        // so without it ng-model would create a separate postData on the child scope and oldPassword would never be sent.
+        $scope.postData = {};
         $scope.requireCurrentPassword = dialog.requireCurrentPassword !== false;
         $scope.userName = authService.userName;
         $scope.canCancel = !authService.passwordExpired;
