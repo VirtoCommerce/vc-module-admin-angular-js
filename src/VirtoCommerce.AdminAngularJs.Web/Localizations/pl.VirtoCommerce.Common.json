@@ -182,6 +182,12 @@
     "validators": {
       "uriWithoutQuery": {
         "error": "Nieprawidłowy format URI. Upewnij się, że URI nie zawiera parametrów zapytania"
+      },
+      "redirectUri": {
+        "error": "Użyj bezwzględnego URI bez fragmentu, z HTTPS, chyba że to adres loopback (localhost, 127.0.0.1)"
+      },
+      "absoluteUri": {
+        "error": "Użyj bezwzględnego URI"
       }
     },
     "errors": {

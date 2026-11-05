@@ -547,7 +547,17 @@
         "subtitle": "Turvallisuuspalvelu",
         "labels": {
           "clientSecret-warning": "Varoitus! Sinun täytyy kopioida salaisuus nyt. Se piilotetaan bladetin sulkemisen jälkeen",
-          "urls": "URL-osoitteet"
+          "urls": "URL-osoitteet",
+          "applicationType": "Sovelluksen tyyppi",
+          "consentType": "Suostumus",
+          "pkce": "Vaadi PKCE",
+          "grantTypes": "Myöntötyypit",
+          "scopes": "Laajuudet",
+          "resources": "Resurssit (MCP-päätepisteet ja API:t)",
+          "mcp-endpoint": "MCP: {{title}}",
+          "not-registered": "Ei kohdassa Authorization:Resources",
+          "other-resources": "Muut resurssit",
+          "other-permissions": "Muut luvat"
         },
         "blades": {
           "edit-redirectUris": {
@@ -557,7 +567,64 @@
           "edit-postLogoutRedirectUris": {
             "title": "Uudelleenohjaus-URI:t uloskirjautumisen jälkeen",
             "subtitle": "Hallinnoi uudelleenohjaus-URI:ita uloskirjautumisen jälkeen"
+          },
+          "edit-resources": {
+            "title": "Muut resurssit",
+            "subtitle": "Hallinnoi sovelluksen resursseja"
+          },
+          "edit-permissions": {
+            "title": "Muut luvat",
+            "subtitle": "Hallinnoi lupia, joita tämä näkymä ei muokkaa"
           }
+        },
+        "descriptions": {
+          "pkce": "Sovellus todistaa kirjautumisen koodin todentajalla (RFC 7636), kuten MCP-määritys edellyttää",
+          "scopes": "openid ja offline_access ovat aina sallittuja",
+          "resources": "Resurssit, joille sovellus voi pyytää tokenin (RFC 8707). Tekoälyagentti tarvitsee MCP-päätepisteen, johon se yhdistää, täsmälleen siinä muodossa kuin se on kirjoitettu agenttiin.",
+          "no-resources": "Alusta ei luettele resursseja: lisää ne kohtaan Authorization:Resources tai asenna moduulit, jotka tarjoavat MCP-päätepisteitä.",
+          "other-permissions": "Luvat, joita tämä näkymä ei muokkaa, säilyvät ennallaan. Päätepisteiden luvat määräytyvät myöntötyyppien mukaan."
+        },
+        "client-types": {
+          "public": "Julkinen",
+          "public-description": "Ei salaisuutta: tekoälyagentti tai työpöytä-, mobiili- tai selainsovellus",
+          "confidential": "Luottamuksellinen",
+          "confidential-description": "Säilyttää asiakassalaisuuden palvelimella; ei voi muuttaa sovelluksen luomisen jälkeen"
+        },
+        "application-types": {
+          "web": "Verkko",
+          "web-description": "Uudelleenohjaus-URI:en on vastattava täsmälleen",
+          "native": "Natiivi",
+          "native-description": "Työpöytä- tai komentorivisovellus: loopback-uudelleenohjaus-URI ilman porttia hyväksyy minkä tahansa portin"
+        },
+        "consent-types": {
+          "explicit": "Eksplisiittinen",
+          "explicit-description": "Käyttäjä sallii sovelluksen kerran, eikä häneltä kysytä uudelleen",
+          "implicit": "Implisiittinen",
+          "implicit-description": "Käyttäjältä ei koskaan kysytä: alustan omille luotetuille sovelluksille",
+          "systematic": "Systemaattinen",
+          "systematic-description": "Käyttäjältä kysytään jokaisella kirjautumisella",
+          "external": "Ulkoinen",
+          "external-description": "Vain järjestelmänvalvojan valtuuttamat käyttäjät voivat kirjautua"
+        },
+        "grant-types": {
+          "authorization_code": "Valtuutuskoodi",
+          "refresh_token": "Päivitystoken",
+          "client_credentials": "Asiakkaan tunnistetiedot",
+          "password": "Salasana"
+        },
+        "validations": {
+          "clientId-taken": "Toinen sovellus käyttää jo tätä asiakas-ID:tä",
+          "grant-type-required": "Valitse vähintään yksi myöntötyyppi",
+          "uri-invalid": "{{uri}} ei ole absoluuttinen URI",
+          "uri-fragment": "{{uri}} ei saa sisältää fragmenttia (#)",
+          "uri-http": "{{uri}}: käytä HTTPS:ää. HTTP on sallittu vain loopback-osoitteille, kuten localhost ja 127.0.0.1"
+        },
+        "warnings": {
+          "no-pkce": "Julkinen asiakas ilman PKCE:tä: varastetun valtuutuskoodin voi vaihtaa tokeniin. Ota PKCE käyttöön, ellei sovellus pysty lähettämään sitä.",
+          "public-client-credentials": "Julkisella asiakkaalla ei ole salaisuutta, joten se ei voi käyttää asiakkaan tunnistetietojen myöntöä.",
+          "unregistered-resources": "Tokenia ei myönnetä kohteelle {{resources}}, ennen kuin se on lueteltu alustan asetusten kohdassa Authorization:Resources.",
+          "redirect-required": "Valtuutuskoodin myöntö tarvitsee uudelleenohjaus-URI:n.",
+          "legacy-http": "{{uri}} käyttää HTTP:tä osoitteelle, joka ei ole loopback-osoite. Se säilytetään, mutta uutta samanlaista ei voi lisätä."
         }
       },
       "login": {

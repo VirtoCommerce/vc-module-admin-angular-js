@@ -546,7 +546,17 @@
         "subtitle": "セキュリティサービス",
         "labels": {
           "clientSecret-warning": "警告！シークレットを今すぐコピーする必要があります。ブレードを閉じると非表示になります",
-          "urls": "URL"
+          "urls": "URL",
+          "applicationType": "アプリケーションタイプ",
+          "consentType": "同意",
+          "pkce": "PKCE を必須にする",
+          "grantTypes": "グラントタイプ",
+          "scopes": "スコープ",
+          "resources": "リソース (MCP エンドポイントと API)",
+          "mcp-endpoint": "MCP: {{title}}",
+          "not-registered": "Authorization:Resources にありません",
+          "other-resources": "その他のリソース",
+          "other-permissions": "その他の権限"
         },
         "blades": {
           "edit-redirectUris": {
@@ -556,7 +566,64 @@
           "edit-postLogoutRedirectUris": {
             "title": "ログアウト後のリダイレクトURI",
             "subtitle": "ログアウト後のリダイレクトURIの管理"
+          },
+          "edit-resources": {
+            "title": "その他のリソース",
+            "subtitle": "アプリケーションのリソースを管理"
+          },
+          "edit-permissions": {
+            "title": "その他の権限",
+            "subtitle": "この画面で編集しない権限を管理"
           }
+        },
+        "descriptions": {
+          "pkce": "MCP 仕様の要件に従い、アプリケーションはコード検証子 (RFC 7636) でサインインを証明します",
+          "scopes": "openid と offline_access は常に許可されます",
+          "resources": "アプリケーションがトークンを要求できるリソース (RFC 8707)。AI エージェントには、接続先の MCP エンドポイントを、エージェントに入力したとおりに指定する必要があります。",
+          "no-resources": "プラットフォームにリソースがありません。Authorization:Resources に追加するか、MCP エンドポイントを提供するモジュールをインストールしてください。",
+          "other-permissions": "この画面で編集しない権限は、そのまま保持されます。エンドポイントの権限はグラントタイプに従います。"
+        },
+        "client-types": {
+          "public": "パブリック",
+          "public-description": "シークレットなし: AI エージェント、デスクトップ、モバイル、ブラウザーのアプリ",
+          "confidential": "コンフィデンシャル",
+          "confidential-description": "サーバーにクライアントシークレットを保持します。アプリケーションの作成後は変更できません"
+        },
+        "application-types": {
+          "web": "Web",
+          "web-description": "リダイレクトURIは完全に一致する必要があります",
+          "native": "ネイティブ",
+          "native-description": "デスクトップまたは CLI アプリ: ポートを指定しないループバックのリダイレクトURIは任意のポートを受け付けます"
+        },
+        "consent-types": {
+          "explicit": "明示的",
+          "explicit-description": "ユーザーが一度アプリケーションを許可すると、以降は確認されません",
+          "implicit": "暗黙的",
+          "implicit-description": "ユーザーには確認しません。プラットフォーム自身の信頼済みアプリケーションに使用します",
+          "systematic": "毎回",
+          "systematic-description": "サインインのたびにユーザーに確認します",
+          "external": "外部",
+          "external-description": "管理者が承認したユーザーのみサインインできます"
+        },
+        "grant-types": {
+          "authorization_code": "認可コード",
+          "refresh_token": "リフレッシュトークン",
+          "client_credentials": "クライアントクレデンシャル",
+          "password": "パスワード"
+        },
+        "validations": {
+          "clientId-taken": "このクライアントIDは別のアプリケーションで既に使用されています",
+          "grant-type-required": "グラントタイプを 1 つ以上選択してください",
+          "uri-invalid": "{{uri}} は絶対 URI ではありません",
+          "uri-fragment": "{{uri}} にはフラグメント (#) を含めることができません",
+          "uri-http": "{{uri}} は HTTPS を使用する必要があります。HTTP は localhost や 127.0.0.1 などのループバックアドレスでのみ許可されます"
+        },
+        "warnings": {
+          "no-pkce": "PKCE なしのパブリッククライアント: 盗まれた認可コードがトークンと交換される可能性があります。アプリケーションが送信できない場合を除き、PKCE を有効にしてください。",
+          "public-client-credentials": "パブリッククライアントにはシークレットがないため、クライアントクレデンシャルグラントは使用できません。",
+          "unregistered-resources": "{{resources}} がプラットフォーム設定の Authorization:Resources に登録されるまで、トークンは発行されません。",
+          "redirect-required": "認可コードグラントにはリダイレクトURIが必要です。",
+          "legacy-http": "{{uri}} はループバックアドレスではないアドレスに HTTP を使用しています。そのまま保持されますが、同様の URI を新たに追加することはできません。"
         }
       },
       "login": {

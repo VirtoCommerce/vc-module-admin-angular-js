@@ -182,6 +182,12 @@
     "validators": {
       "uriWithoutQuery": {
         "error": "URI格式无效。请确保URI没有查询参数"
+      },
+      "redirectUri": {
+        "error": "请使用不含片段的绝对 URI；除环回地址 (localhost、127.0.0.1) 外须使用 HTTPS"
+      },
+      "absoluteUri": {
+        "error": "请使用绝对 URI"
       }
     },
     "errors": {

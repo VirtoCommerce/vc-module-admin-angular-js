@@ -182,6 +182,12 @@
     "validators": {
       "uriWithoutQuery": {
         "error": "Неверный формат URI. Убедитесь, что URI не содержит параметров запроса"
+      },
+      "redirectUri": {
+        "error": "Используйте абсолютный URI без фрагмента, с HTTPS, если это не loopback-адрес (localhost, 127.0.0.1)"
+      },
+      "absoluteUri": {
+        "error": "Используйте абсолютный URI"
       }
     },
     "errors": {

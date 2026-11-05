@@ -182,6 +182,12 @@
     "validators": {
       "uriWithoutQuery": {
         "error": "無効なURI形式です。URIにクエリパラメータがないことを確認してください"
+      },
+      "redirectUri": {
+        "error": "フラグメントのない絶対 URI を使用してください。ループバックアドレス (localhost、127.0.0.1) 以外では HTTPS が必要です"
+      },
+      "absoluteUri": {
+        "error": "絶対 URI を使用してください"
       }
     },
     "errors": {

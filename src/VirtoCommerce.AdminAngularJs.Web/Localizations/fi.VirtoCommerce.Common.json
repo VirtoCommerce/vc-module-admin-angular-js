@@ -182,6 +182,12 @@
     "validators": {
       "uriWithoutQuery": {
         "error": "Virheellinen URI-muoto. Varmista, että URI ei sisällä kyselyparametreja"
+      },
+      "redirectUri": {
+        "error": "Käytä absoluuttista URI:a ilman fragmenttia. HTTPS vaaditaan, ellei kyseessä ole loopback-osoite (localhost, 127.0.0.1)"
+      },
+      "absoluteUri": {
+        "error": "Käytä absoluuttista URI:a"
       }
     },
     "errors": {

@@ -548,7 +548,17 @@
         "subtitle": "Sicherheitsdienst",
         "labels": {
           "clientSecret-warning": "Achtung! Sie müssen das Geheimnis jetzt kopieren. Es wird nach dem Schließen des Fensters verborgen",
-          "urls": "URLs"
+          "urls": "URLs",
+          "applicationType": "Anwendungstyp",
+          "consentType": "Einwilligung",
+          "pkce": "PKCE erforderlich",
+          "grantTypes": "Grant-Typen",
+          "scopes": "Bereiche",
+          "resources": "Ressourcen (MCP-Endpunkte und APIs)",
+          "mcp-endpoint": "MCP: {{title}}",
+          "not-registered": "Nicht in Authorization:Resources",
+          "other-resources": "Weitere Ressourcen",
+          "other-permissions": "Weitere Berechtigungen"
         },
         "blades": {
           "edit-redirectUris": {
@@ -558,7 +568,64 @@
           "edit-postLogoutRedirectUris": {
             "title": "Post-Logout-Weiterleitungs-URIs",
             "subtitle": "Post-Logout-Weiterleitungs-URIs verwalten"
+          },
+          "edit-resources": {
+            "title": "Weitere Ressourcen",
+            "subtitle": "Ressourcen der Anwendung verwalten"
+          },
+          "edit-permissions": {
+            "title": "Weitere Berechtigungen",
+            "subtitle": "Berechtigungen verwalten, die dieser Bildschirm nicht bearbeitet"
           }
+        },
+        "descriptions": {
+          "pkce": "Die Anwendung weist die Anmeldung mit einem Code Verifier nach (RFC 7636), wie es die MCP-Spezifikation verlangt",
+          "scopes": "openid und offline_access sind immer erlaubt",
+          "resources": "Die Ressourcen, für die die Anwendung ein Token anfordern darf (RFC 8707). Ein KI-Agent benötigt den MCP-Endpunkt, mit dem er sich verbindet, genau so, wie er im Agenten eingegeben ist.",
+          "no-resources": "Die Plattform listet keine Ressourcen: Fügen Sie sie in Authorization:Resources hinzu oder installieren Sie die Module, die MCP-Endpunkte bereitstellen.",
+          "other-permissions": "Berechtigungen, die dieser Bildschirm nicht bearbeitet, bleiben unverändert. Endpunkt-Berechtigungen richten sich nach den Grant-Typen."
+        },
+        "client-types": {
+          "public": "Öffentlich",
+          "public-description": "Ohne Geheimnis: ein KI-Agent, eine Desktop-, Mobil- oder Browser-App",
+          "confidential": "Vertraulich",
+          "confidential-description": "Bewahrt ein Client-Geheimnis auf einem Server auf; kann nach dem Erstellen der Anwendung nicht mehr geändert werden"
+        },
+        "application-types": {
+          "web": "Web",
+          "web-description": "Weiterleitungs-URIs müssen exakt übereinstimmen",
+          "native": "Nativ",
+          "native-description": "Eine Desktop- oder CLI-App: Ein Loopback-Weiterleitungs-URI ohne Port akzeptiert jeden Port"
+        },
+        "consent-types": {
+          "explicit": "Explizit",
+          "explicit-description": "Der Benutzer erlaubt die Anwendung einmal und wird danach nicht mehr gefragt",
+          "implicit": "Implizit",
+          "implicit-description": "Der Benutzer wird nie gefragt: für die eigenen vertrauenswürdigen Anwendungen der Plattform",
+          "systematic": "Systematisch",
+          "systematic-description": "Der Benutzer wird bei jeder Anmeldung gefragt",
+          "external": "Extern",
+          "external-description": "Nur Benutzer, die ein Administrator autorisiert hat, können sich anmelden"
+        },
+        "grant-types": {
+          "authorization_code": "Autorisierungscode",
+          "refresh_token": "Aktualisierungstoken",
+          "client_credentials": "Client-Anmeldeinformationen",
+          "password": "Passwort"
+        },
+        "validations": {
+          "clientId-taken": "Eine andere Anwendung verwendet diese Client-ID bereits",
+          "grant-type-required": "Wählen Sie mindestens einen Grant-Typ aus",
+          "uri-invalid": "{{uri}} ist kein absoluter URI",
+          "uri-fragment": "{{uri}} darf kein Fragment (#) enthalten",
+          "uri-http": "{{uri}} muss HTTPS verwenden: HTTP ist nur für Loopback-Adressen wie localhost und 127.0.0.1 erlaubt"
+        },
+        "warnings": {
+          "no-pkce": "Ein öffentlicher Client ohne PKCE: Ein gestohlener Autorisierungscode kann gegen ein Token eingetauscht werden. Aktivieren Sie PKCE, es sei denn, die Anwendung kann es nicht senden.",
+          "public-client-credentials": "Ein öffentlicher Client hat kein Geheimnis und kann daher den Grant „Client-Anmeldeinformationen“ nicht verwenden.",
+          "unregistered-resources": "Für {{resources}} wird kein Token ausgestellt, bis es in Authorization:Resources der Plattformeinstellungen aufgeführt ist.",
+          "redirect-required": "Der Grant „Autorisierungscode“ benötigt einen Weiterleitungs-URI.",
+          "legacy-http": "{{uri}} verwendet HTTP für eine Adresse, die keine Loopback-Adresse ist. Der URI bleibt erhalten, aber ein neuer dieser Art kann nicht hinzugefügt werden."
         }
       },
       "login": {

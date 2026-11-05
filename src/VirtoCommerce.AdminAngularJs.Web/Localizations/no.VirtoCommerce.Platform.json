@@ -547,7 +547,17 @@
         "subtitle": "Sikkerhetstjeneste",
         "labels": {
           "clientSecret-warning": "Advarsel! Du må kopiere hemmeligheten nå. Den vil bli skjult etter at bladet lukkes",
-          "urls": "URL-er"
+          "urls": "URL-er",
+          "applicationType": "Applikasjonstype",
+          "consentType": "Samtykke",
+          "pkce": "Krev PKCE",
+          "grantTypes": "Tildelingstyper",
+          "scopes": "Omfang",
+          "resources": "Ressurser (MCP-endepunkter og API-er)",
+          "mcp-endpoint": "MCP: {{title}}",
+          "not-registered": "Ikke i Authorization:Resources",
+          "other-resources": "Andre ressurser",
+          "other-permissions": "Andre tillatelser"
         },
         "blades": {
           "edit-redirectUris": {
@@ -557,7 +567,64 @@
           "edit-postLogoutRedirectUris": {
             "title": "URI-er for omdirigering etter utlogging",
             "subtitle": "Administrer URI-er for omdirigering etter utlogging"
+          },
+          "edit-resources": {
+            "title": "Andre ressurser",
+            "subtitle": "Administrer ressursene til applikasjonen"
+          },
+          "edit-permissions": {
+            "title": "Andre tillatelser",
+            "subtitle": "Administrer tillatelsene dette skjermbildet ikke redigerer"
           }
+        },
+        "descriptions": {
+          "pkce": "Applikasjonen beviser innloggingen med en kodeverifikator (RFC 7636), slik MCP-spesifikasjonen krever",
+          "scopes": "openid og offline_access er alltid tillatt",
+          "resources": "Ressursene applikasjonen kan be om et token for (RFC 8707). En KI-agent trenger MCP-endepunktet den kobler til, nøyaktig slik det er skrevet inn i agenten.",
+          "no-resources": "Plattformen viser ingen ressurser: legg dem til i Authorization:Resources, eller installer modulene som leverer MCP-endepunkter.",
+          "other-permissions": "Tillatelser som dette skjermbildet ikke redigerer, beholdes som de er. Endepunkttillatelser følger tildelingstypene."
+        },
+        "client-types": {
+          "public": "Offentlig",
+          "public-description": "Ingen hemmelighet: en KI-agent eller en skrivebords-, mobil- eller nettleserapp",
+          "confidential": "Konfidensiell",
+          "confidential-description": "Oppbevarer en klienthemmelighet på en server; kan ikke endres etter at applikasjonen er opprettet"
+        },
+        "application-types": {
+          "web": "Nett",
+          "web-description": "Omdirigerings-URI-er må samsvare nøyaktig",
+          "native": "Nativ",
+          "native-description": "En skrivebords- eller CLI-app: en loopback-omdirigerings-URI uten port godtar hvilken som helst port"
+        },
+        "consent-types": {
+          "explicit": "Eksplisitt",
+          "explicit-description": "Brukeren godkjenner applikasjonen én gang og blir ikke spurt igjen",
+          "implicit": "Implisitt",
+          "implicit-description": "Brukeren blir aldri spurt: for plattformens egne klarerte applikasjoner",
+          "systematic": "Systematisk",
+          "systematic-description": "Brukeren blir spurt ved hver innlogging",
+          "external": "Ekstern",
+          "external-description": "Bare brukere som en administrator har autorisert, kan logge inn"
+        },
+        "grant-types": {
+          "authorization_code": "Autorisasjonskode",
+          "refresh_token": "Oppdateringstoken",
+          "client_credentials": "Klientlegitimasjon",
+          "password": "Passord"
+        },
+        "validations": {
+          "clientId-taken": "En annen applikasjon bruker allerede denne klient-ID-en",
+          "grant-type-required": "Velg minst én tildelingstype",
+          "uri-invalid": "{{uri}} er ikke en absolutt URI",
+          "uri-fragment": "{{uri}} kan ikke ha et fragment (#)",
+          "uri-http": "{{uri}} må bruke HTTPS: HTTP er bare tillatt for loopback-adresser som localhost og 127.0.0.1"
+        },
+        "warnings": {
+          "no-pkce": "En offentlig klient uten PKCE: en stjålet autorisasjonskode kan byttes mot et token. Slå på PKCE med mindre applikasjonen ikke kan sende det.",
+          "public-client-credentials": "En offentlig klient har ingen hemmelighet og kan derfor ikke bruke tildelingstypen klientlegitimasjon.",
+          "unregistered-resources": "Det utstedes ikke noe token for {{resources}} før den er oppført i Authorization:Resources i plattforminnstillingene.",
+          "redirect-required": "Tildelingstypen autorisasjonskode krever en omdirigerings-URI.",
+          "legacy-http": "{{uri}} bruker HTTP for en adresse som ikke er en loopback-adresse. Den beholdes, men en ny av samme type kan ikke legges til."
         }
       },
       "login": {
