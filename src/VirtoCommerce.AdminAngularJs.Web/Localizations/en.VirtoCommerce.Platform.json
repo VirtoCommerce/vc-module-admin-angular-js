@@ -618,6 +618,7 @@
           "grant-type-required": "Pick at least one grant type",
           "uri-invalid": "{{uri}} is not an absolute URI",
           "uri-fragment": "{{uri}} can't have a fragment (#)",
+          "uri-script": "{{uri}} can't use a script scheme (javascript, vbscript, data)",
           "uri-http": "{{uri}} must use HTTPS: HTTP is allowed only for loopback addresses such as localhost and 127.0.0.1"
         },
         "warnings": {

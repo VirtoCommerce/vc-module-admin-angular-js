@@ -617,6 +617,7 @@
           "grant-type-required": "Valitse vähintään yksi myöntötyyppi",
           "uri-invalid": "{{uri}} ei ole absoluuttinen URI",
           "uri-fragment": "{{uri}} ei saa sisältää fragmenttia (#)",
+          "uri-script": "{{uri}} ei voi käyttää komentosarjaskeemaa (javascript, vbscript, data)",
           "uri-http": "{{uri}}: käytä HTTPS:ää. HTTP on sallittu vain loopback-osoitteille, kuten localhost ja 127.0.0.1"
         },
         "warnings": {

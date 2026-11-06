@@ -616,6 +616,7 @@
           "grant-type-required": "Selezionare almeno un tipo di concessione",
           "uri-invalid": "{{uri}} non è un URI assoluto",
           "uri-fragment": "{{uri}} non può contenere un frammento (#)",
+          "uri-script": "{{uri}} non può usare uno schema di script (javascript, vbscript, data)",
           "uri-http": "{{uri}} deve usare HTTPS: HTTP è consentito solo per indirizzi di loopback come localhost e 127.0.0.1"
         },
         "warnings": {

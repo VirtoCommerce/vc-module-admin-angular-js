@@ -616,6 +616,7 @@
           "grant-type-required": "Elija al menos un tipo de concesión",
           "uri-invalid": "{{uri}} no es un URI absoluto",
           "uri-fragment": "{{uri}} no puede tener un fragmento (#)",
+          "uri-script": "{{uri}} no puede usar un esquema de script (javascript, vbscript, data)",
           "uri-http": "{{uri}} debe usar HTTPS: HTTP solo se permite para direcciones de bucle invertido como localhost y 127.0.0.1"
         },
         "warnings": {

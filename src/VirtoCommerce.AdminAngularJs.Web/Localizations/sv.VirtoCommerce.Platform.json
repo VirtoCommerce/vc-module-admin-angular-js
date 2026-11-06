@@ -617,6 +617,7 @@
           "grant-type-required": "Välj minst en beviljandetyp",
           "uri-invalid": "{{uri}} är inte en absolut URI",
           "uri-fragment": "{{uri}} får inte innehålla ett fragment (#)",
+          "uri-script": "{{uri}} kan inte använda ett skriptschema (javascript, vbscript, data)",
           "uri-http": "{{uri}} måste använda HTTPS: HTTP tillåts endast för loopback-adresser som localhost och 127.0.0.1"
         },
         "warnings": {

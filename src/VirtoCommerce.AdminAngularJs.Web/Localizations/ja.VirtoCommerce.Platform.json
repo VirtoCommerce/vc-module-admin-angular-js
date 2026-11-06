@@ -616,6 +616,7 @@
           "grant-type-required": "グラントタイプを 1 つ以上選択してください",
           "uri-invalid": "{{uri}} は絶対 URI ではありません",
           "uri-fragment": "{{uri}} にはフラグメント (#) を含めることができません",
+          "uri-script": "{{uri}} にはスクリプトのスキーム (javascript、vbscript、data) は使用できません",
           "uri-http": "{{uri}} は HTTPS を使用する必要があります。HTTP は localhost や 127.0.0.1 などのループバックアドレスでのみ許可されます"
         },
         "warnings": {

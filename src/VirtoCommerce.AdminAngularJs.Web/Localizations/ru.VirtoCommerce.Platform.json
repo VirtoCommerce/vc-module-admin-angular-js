@@ -618,6 +618,7 @@
           "grant-type-required": "Выберите хотя бы один тип гранта",
           "uri-invalid": "{{uri}} не является абсолютным URI",
           "uri-fragment": "{{uri}} не может содержать фрагмент (#)",
+          "uri-script": "{{uri}} не может использовать схему скрипта (javascript, vbscript, data)",
           "uri-http": "{{uri}} должен использовать HTTPS: HTTP разрешён только для loopback-адресов, таких как localhost и 127.0.0.1"
         },
         "warnings": {

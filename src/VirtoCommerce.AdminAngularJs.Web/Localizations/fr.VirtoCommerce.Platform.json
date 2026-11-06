@@ -616,6 +616,7 @@
           "grant-type-required": "Choisissez au moins un type d'octroi",
           "uri-invalid": "{{uri}} n'est pas un URI absolu",
           "uri-fragment": "{{uri}} ne peut pas contenir de fragment (#)",
+          "uri-script": "{{uri}} ne peut pas utiliser un schéma de script (javascript, vbscript, data)",
           "uri-http": "{{uri}} doit utiliser HTTPS : HTTP n'est autorisé que pour les adresses de bouclage comme localhost et 127.0.0.1"
         },
         "warnings": {

@@ -19,8 +19,8 @@ angular.module('platformWebApp').factory('platformWebApp.validators', [function 
         return host === 'localhost' || host === '[::1]' || /^127(\.\d{1,3}){3}$/.test(host) || /\.localhost$/.test(host);
     }
 
-    // Why a redirect URI of an OAuth application can't be used: 'invalid' (not absolute), 'fragment', or 'http'
-    // (HTTP is allowed only for loopback addresses, RFC 8252)
+    // Why a redirect URI of an OAuth application can't be used: 'invalid' (not absolute), 'script' (runs script in
+    // the browser), 'fragment', or 'http' (HTTP is allowed only for loopback addresses, RFC 8252)
     function redirectUriProblem(value) {
         var url;
         try {
@@ -30,6 +30,9 @@ angular.module('platformWebApp').factory('platformWebApp.validators', [function 
         }
         if (url.protocol === 'file:') {
             return 'invalid';
+        }
+        if (/^(javascript|vbscript|data):$/i.test(url.protocol)) {
+            return 'script';
         }
         if (url.hash || value.indexOf('#') >= 0) {
             return 'fragment';

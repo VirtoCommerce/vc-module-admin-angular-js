@@ -616,6 +616,7 @@
           "grant-type-required": "Wybierz co najmniej jeden typ grantu",
           "uri-invalid": "{{uri}} nie jest bezwzględnym URI",
           "uri-fragment": "{{uri}} nie może zawierać fragmentu (#)",
+          "uri-script": "{{uri}} nie może używać schematu skryptu (javascript, vbscript, data)",
           "uri-http": "{{uri}} musi używać HTTPS: HTTP jest dozwolony tylko dla adresów loopback, takich jak localhost i 127.0.0.1"
         },
         "warnings": {
