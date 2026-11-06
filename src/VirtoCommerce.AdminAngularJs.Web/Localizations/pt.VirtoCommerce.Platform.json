@@ -546,7 +546,17 @@
         "subtitle": "Serviço de segurança",
         "labels": {
           "clientSecret-warning": "Aviso! Você deve copiar o segredo agora. Ele será ocultado após fechar a lâmina",
-          "urls": "URLs"
+          "urls": "URLs",
+          "applicationType": "Tipo de aplicativo",
+          "consentType": "Consentimento",
+          "pkce": "Exigir PKCE",
+          "grantTypes": "Tipos de concessão",
+          "scopes": "Escopos",
+          "resources": "Recursos (endpoints MCP e APIs)",
+          "mcp-endpoint": "MCP: {{title}}",
+          "not-registered": "Não está em Authorization:Resources",
+          "other-resources": "Outros recursos",
+          "other-permissions": "Outras permissões"
         },
         "blades": {
           "edit-redirectUris": {
@@ -556,7 +566,65 @@
           "edit-postLogoutRedirectUris": {
             "title": "URIs de redirecionamento pós-logout",
             "subtitle": "Gerenciar URIs de redirecionamento pós-logout"
+          },
+          "edit-resources": {
+            "title": "Outros recursos",
+            "subtitle": "Gerenciar os recursos do aplicativo"
+          },
+          "edit-permissions": {
+            "title": "Outras permissões",
+            "subtitle": "Gerenciar as permissões que esta tela não edita"
           }
+        },
+        "descriptions": {
+          "pkce": "O aplicativo comprova o acesso com um verificador de código (RFC 7636), como exige a especificação MCP",
+          "scopes": "openid e offline_access são sempre permitidos",
+          "resources": "Os recursos para os quais o aplicativo pode solicitar um token (RFC 8707). Um agente de IA precisa do endpoint MCP ao qual se conecta, exatamente como foi digitado no agente.",
+          "no-resources": "A plataforma não lista nenhum recurso: adicione-os em Authorization:Resources ou instale os módulos que fornecem endpoints MCP.",
+          "other-permissions": "Permissões que esta tela não edita, mantidas como estão. As permissões de endpoint seguem os tipos de concessão."
+        },
+        "client-types": {
+          "public": "Público",
+          "public-description": "Sem segredo: um agente de IA ou um app de desktop, móvel ou de navegador",
+          "confidential": "Confidencial",
+          "confidential-description": "Guarda um segredo do cliente em um servidor; não pode ser alterado depois que o aplicativo é criado"
+        },
+        "application-types": {
+          "web": "Web",
+          "web-description": "Os URIs de redirecionamento devem corresponder exatamente",
+          "native": "Nativo",
+          "native-description": "Um app de desktop ou CLI: um URI de redirecionamento de loopback sem porta aceita qualquer porta"
+        },
+        "consent-types": {
+          "explicit": "Explícito",
+          "explicit-description": "O usuário autoriza o aplicativo uma vez e não é perguntado novamente",
+          "implicit": "Implícito",
+          "implicit-description": "O usuário nunca é perguntado: use para os aplicativos confiáveis da própria plataforma",
+          "systematic": "Sistemático",
+          "systematic-description": "O usuário é perguntado a cada acesso",
+          "external": "Externo",
+          "external-description": "Somente usuários autorizados por um administrador podem acessar"
+        },
+        "grant-types": {
+          "authorization_code": "Código de autorização",
+          "refresh_token": "Token de atualização",
+          "client_credentials": "Credenciais do cliente",
+          "password": "Senha"
+        },
+        "validations": {
+          "clientId-taken": "Outro aplicativo já usa este ID do cliente",
+          "grant-type-required": "Escolha pelo menos um tipo de concessão",
+          "uri-invalid": "{{uri}} não é um URI absoluto",
+          "uri-fragment": "{{uri}} não pode ter um fragmento (#)",
+          "uri-script": "{{uri}} não pode usar um esquema de script (javascript, vbscript, data)",
+          "uri-http": "{{uri}} deve usar HTTPS: HTTP só é permitido para endereços de loopback, como localhost e 127.0.0.1"
+        },
+        "warnings": {
+          "no-pkce": "Um cliente público sem PKCE: um código de autorização roubado pode ser trocado por um token. Ative o PKCE, a menos que o aplicativo não consiga enviá-lo.",
+          "public-client-credentials": "Um cliente público não tem segredo, portanto não pode usar a concessão de credenciais do cliente.",
+          "unregistered-resources": "Nenhum token é emitido para {{resources}} até que ele esteja listado em Authorization:Resources das configurações da plataforma.",
+          "redirect-required": "A concessão de código de autorização precisa de um URI de redirecionamento.",
+          "legacy-http": "{{uri}} usa HTTP para um endereço que não é de loopback. Ele é mantido, mas não é possível adicionar um novo como ele."
         }
       },
       "login": {

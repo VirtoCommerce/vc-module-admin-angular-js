@@ -182,6 +182,12 @@
     "validators": {
       "uriWithoutQuery": {
         "error": "Ungültiges URI-Format. Stellen Sie sicher, dass die URI keine Abfrageparameter enthält"
+      },
+      "redirectUri": {
+        "error": "Verwenden Sie einen absoluten URI ohne Fragment, mit HTTPS, außer bei einer Loopback-Adresse (localhost, 127.0.0.1)"
+      },
+      "absoluteUri": {
+        "error": "Verwenden Sie einen absoluten URI"
       }
     },
     "errors": {

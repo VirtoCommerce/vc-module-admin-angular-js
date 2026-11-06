@@ -182,6 +182,12 @@
     "validators": {
       "uriWithoutQuery": {
         "error": "Format d'URI invalide. Assurez-vous que l'URI n'a pas de paramètres de requête"
+      },
+      "redirectUri": {
+        "error": "Utilisez un URI absolu sans fragment, en HTTPS sauf pour une adresse de bouclage (localhost, 127.0.0.1)"
+      },
+      "absoluteUri": {
+        "error": "Utilisez un URI absolu"
       }
     },
     "errors": {

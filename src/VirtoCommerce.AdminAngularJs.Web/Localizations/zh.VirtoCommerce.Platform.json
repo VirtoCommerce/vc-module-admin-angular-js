@@ -546,7 +546,17 @@
         "subtitle": "安全服务",
         "labels": {
           "clientSecret-warning": "警告！您必须立即复制密钥。关闭此页面后将无法再次查看",
-          "urls": "URL"
+          "urls": "URL",
+          "applicationType": "应用类型",
+          "consentType": "同意",
+          "pkce": "要求 PKCE",
+          "grantTypes": "授权类型",
+          "scopes": "作用域",
+          "resources": "资源（MCP 端点和 API）",
+          "mcp-endpoint": "MCP：{{title}}",
+          "not-registered": "不在 Authorization:Resources 中",
+          "other-resources": "其他资源",
+          "other-permissions": "其他权限"
         },
         "blades": {
           "edit-redirectUris": {
@@ -556,7 +566,65 @@
           "edit-postLogoutRedirectUris": {
             "title": "登出后重定向 URI",
             "subtitle": "管理登出后重定向 URI"
+          },
+          "edit-resources": {
+            "title": "其他资源",
+            "subtitle": "管理应用的资源"
+          },
+          "edit-permissions": {
+            "title": "其他权限",
+            "subtitle": "管理此界面不编辑的权限"
           }
+        },
+        "descriptions": {
+          "pkce": "按照 MCP 规范的要求，应用使用代码验证器 (RFC 7636) 证明登录",
+          "scopes": "始终允许 openid 和 offline_access",
+          "resources": "应用可以为其请求令牌的资源 (RFC 8707)。AI 代理需要其连接的 MCP 端点，且必须与代理中输入的完全一致。",
+          "no-resources": "平台未列出任何资源：请在 Authorization:Resources 中添加，或安装提供 MCP 端点的模块。",
+          "other-permissions": "此界面不编辑的权限将保持不变。端点权限由授权类型决定。"
+        },
+        "client-types": {
+          "public": "公共",
+          "public-description": "无密钥：AI 代理，或桌面、移动、浏览器应用",
+          "confidential": "机密",
+          "confidential-description": "在服务器上保存客户端密钥；应用创建后无法更改"
+        },
+        "application-types": {
+          "web": "Web",
+          "web-description": "重定向 URI 必须完全匹配",
+          "native": "原生",
+          "native-description": "桌面或 CLI 应用：不带端口的环回重定向 URI 接受任意端口"
+        },
+        "consent-types": {
+          "explicit": "显式",
+          "explicit-description": "用户授权应用一次，之后不再询问",
+          "implicit": "隐式",
+          "implicit-description": "从不询问用户：用于平台自身的受信任应用",
+          "systematic": "每次询问",
+          "systematic-description": "每次登录时都询问用户",
+          "external": "外部",
+          "external-description": "只有管理员授权的用户才能登录"
+        },
+        "grant-types": {
+          "authorization_code": "授权码",
+          "refresh_token": "刷新令牌",
+          "client_credentials": "客户端凭据",
+          "password": "密码"
+        },
+        "validations": {
+          "clientId-taken": "其他应用已在使用此客户端 ID",
+          "grant-type-required": "请至少选择一种授权类型",
+          "uri-invalid": "{{uri}} 不是绝对 URI",
+          "uri-fragment": "{{uri}} 不能包含片段 (#)",
+          "uri-script": "{{uri}} 不能使用脚本协议（javascript、vbscript、data）",
+          "uri-http": "{{uri}} 必须使用 HTTPS：仅 localhost 和 127.0.0.1 等环回地址允许使用 HTTP"
+        },
+        "warnings": {
+          "no-pkce": "未使用 PKCE 的公共客户端：被盗的授权码可被换取令牌。除非应用无法发送 PKCE，否则请启用。",
+          "public-client-credentials": "公共客户端没有密钥，因此无法使用客户端凭据授权。",
+          "unregistered-resources": "在 {{resources}} 列入平台设置的 Authorization:Resources 之前，不会为其颁发令牌。",
+          "redirect-required": "授权码授权需要重定向 URI。",
+          "legacy-http": "{{uri}} 对非环回地址使用 HTTP。该 URI 会被保留，但无法添加新的同类 URI。"
         }
       },
       "login": {

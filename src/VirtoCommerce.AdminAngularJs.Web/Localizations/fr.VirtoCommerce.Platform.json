@@ -546,7 +546,17 @@
         "subtitle": "Service de sécurité",
         "labels": {
           "clientSecret-warning": "Attention ! Vous devez copier le secret maintenant. Il sera caché après la fermeture du panneau",
-          "urls": "URLs"
+          "urls": "URLs",
+          "applicationType": "Type d'application",
+          "consentType": "Consentement",
+          "pkce": "Exiger PKCE",
+          "grantTypes": "Types d'octroi",
+          "scopes": "Portées",
+          "resources": "Ressources (points de terminaison MCP et API)",
+          "mcp-endpoint": "MCP : {{title}}",
+          "not-registered": "Absent de Authorization:Resources",
+          "other-resources": "Autres ressources",
+          "other-permissions": "Autres permissions"
         },
         "blades": {
           "edit-redirectUris": {
@@ -556,7 +566,65 @@
           "edit-postLogoutRedirectUris": {
             "title": "URIs de redirection après déconnexion",
             "subtitle": "Gérer les URIs de redirection après déconnexion"
+          },
+          "edit-resources": {
+            "title": "Autres ressources",
+            "subtitle": "Gérer les ressources de l'application"
+          },
+          "edit-permissions": {
+            "title": "Autres permissions",
+            "subtitle": "Gérer les permissions que cet écran ne modifie pas"
           }
+        },
+        "descriptions": {
+          "pkce": "L'application prouve la connexion avec un vérificateur de code (RFC 7636), comme l'exige la spécification MCP",
+          "scopes": "openid et offline_access sont toujours autorisés",
+          "resources": "Les ressources pour lesquelles l'application peut demander un jeton (RFC 8707). Un agent IA a besoin du point de terminaison MCP auquel il se connecte, exactement tel qu'il est saisi dans l'agent.",
+          "no-resources": "La plateforme ne répertorie aucune ressource : ajoutez-les dans Authorization:Resources ou installez les modules qui fournissent des points de terminaison MCP.",
+          "other-permissions": "Permissions que cet écran ne modifie pas, conservées telles quelles. Les permissions des points de terminaison suivent les types d'octroi."
+        },
+        "client-types": {
+          "public": "Public",
+          "public-description": "Sans secret : un agent IA, une application de bureau, mobile ou de navigateur",
+          "confidential": "Confidentiel",
+          "confidential-description": "Conserve un secret client sur un serveur ; ne peut plus être modifié après la création de l'application"
+        },
+        "application-types": {
+          "web": "Web",
+          "web-description": "Les URI de redirection doivent correspondre exactement",
+          "native": "Native",
+          "native-description": "Une application de bureau ou CLI : un URI de redirection de bouclage sans port accepte n'importe quel port"
+        },
+        "consent-types": {
+          "explicit": "Explicite",
+          "explicit-description": "L'utilisateur autorise l'application une fois, puis n'est plus sollicité",
+          "implicit": "Implicite",
+          "implicit-description": "L'utilisateur n'est jamais sollicité : pour les applications de confiance de la plateforme elle-même",
+          "systematic": "Systématique",
+          "systematic-description": "L'utilisateur est sollicité à chaque connexion",
+          "external": "Externe",
+          "external-description": "Seuls les utilisateurs autorisés par un administrateur peuvent se connecter"
+        },
+        "grant-types": {
+          "authorization_code": "Code d'autorisation",
+          "refresh_token": "Jeton d'actualisation",
+          "client_credentials": "Informations d'identification du client",
+          "password": "Mot de passe"
+        },
+        "validations": {
+          "clientId-taken": "Une autre application utilise déjà cet ID client",
+          "grant-type-required": "Choisissez au moins un type d'octroi",
+          "uri-invalid": "{{uri}} n'est pas un URI absolu",
+          "uri-fragment": "{{uri}} ne peut pas contenir de fragment (#)",
+          "uri-script": "{{uri}} ne peut pas utiliser un schéma de script (javascript, vbscript, data)",
+          "uri-http": "{{uri}} doit utiliser HTTPS : HTTP n'est autorisé que pour les adresses de bouclage comme localhost et 127.0.0.1"
+        },
+        "warnings": {
+          "no-pkce": "Un client public sans PKCE : un code d'autorisation volé peut être échangé contre un jeton. Activez PKCE, sauf si l'application ne peut pas l'envoyer.",
+          "public-client-credentials": "Un client public n'a pas de secret : il ne peut donc pas utiliser l'octroi par informations d'identification du client.",
+          "unregistered-resources": "Aucun jeton n'est émis pour {{resources}} tant qu'il ne figure pas dans Authorization:Resources des paramètres de la plateforme.",
+          "redirect-required": "L'octroi par code d'autorisation nécessite un URI de redirection.",
+          "legacy-http": "{{uri}} utilise HTTP pour une adresse qui n'est pas une adresse de bouclage. Il est conservé, mais un nouvel URI de ce type ne peut pas être ajouté."
         }
       },
       "login": {

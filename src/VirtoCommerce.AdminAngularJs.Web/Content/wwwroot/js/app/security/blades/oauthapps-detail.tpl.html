@@ -1,103 +1,237 @@
-<div class="blade-static __bottom" ng-include="'$(Platform)/Scripts/common/templates/ok-cancel2.tpl.html'"></div>
-<div class="blade-content">
+<div class="blade-static __bottom">
+    <button class="btn" ng-click="cancelChanges()">
+        <span>{{ 'platform.commands.cancel' | translate }}</span>
+    </button>
+    <button class="btn" ng-click="saveChanges()" ng-disabled="!canSave()">
+        <span>{{ 'platform.commands.ok' | translate }}</span>
+    </button>
+</div>
+<div class="blade-content __medium-wide">
     <div class="blade-inner">
-        <div class="inner-block form">
+        <div class="inner-block form" ng-if="blade.currentEntity">
+            <div class="form-group">
+                <label class="form-label">{{ 'platform.blades.oauthapps.labels.displayName' | translate }}</label>
+                <div class="form-input">
+                    <input ng-model="blade.currentEntity.displayName" placeholder="{{ 'platform.blades.oauthapps.placeholders.displayName' | translate }}" required focus-on>
+                </div>
+            </div>
             <div class="form-group">
                 <label class="form-label">{{ 'platform.blades.oauthapps.labels.clientId' | translate }}</label>
                 <div class="form-input">
-                    <input ng-model="blade.currentEntity.clientId" id="clientId" placeholder="{{ 'platform.blades.oauthapps.placeholders.clientId' | translate }}" ng-readonly="!blade.isNew" required focus-on>
+                    <input ng-model="blade.currentEntity.clientId" id="clientId" placeholder="{{ 'platform.blades.oauthapps.placeholders.clientId' | translate }}" ng-readonly="!blade.isNew" required>
                     <button class="btn __ico" type="button" ng-click="copyToClipboard('clientId')" title="{{ 'platform.commands.copy' | translate }}">
                         <i class="btn-ico fas fa-paste"></i>
                     </button>
                 </div>
+                <div class="form-error" ng-if="blade.clientIdTaken && blade.clientIdTaken === blade.currentEntity.clientId">{{ 'platform.blades.oauthapps-detail.validations.clientId-taken' | translate }}</div>
             </div>
 
-            <div ng-if="blade.isNew" class="form-group">
-                <label class="form-label form-error"> {{ 'platform.blades.oauthapps-detail.labels.clientSecret-warning' | translate }} </label>
+            <div class="form-group" ng-if="blade.isNew && blade.currentEntity.clientType === 'confidential'">
+                <label class="form-label">{{ 'platform.blades.oauthapps.labels.clientSecret' | translate }}</label>
                 <div class="form-input">
-                    <input ng-model="blade.currentEntity.clientSecret" id="clientSecret" placeholder="{{ 'platform.blades.oauthapps.placeholders.clientSecret' | translate }}">
+                    <input ng-model="blade.currentEntity.clientSecret" id="clientSecret" readonly>
                     <button class="btn __ico" type="button" ng-click="copyToClipboard('clientSecret')" title="{{ 'platform.commands.copy' | translate }}">
                         <i class="btn-ico fas fa-paste"></i>
                     </button>
                 </div>
+                <div class="note warning">{{ 'platform.blades.oauthapps-detail.labels.clientSecret-warning' | translate }}</div>
             </div>
-
-            <div class="form-group">
-                <label class="form-label">{{ 'platform.blades.oauthapps.labels.displayName' | translate }}</label>
-                <div class="form-input">
-                    <input ng-model="blade.currentEntity.displayName" placeholder="{{ 'platform.blades.oauthapps.placeholders.displayName' | translate }}">
-                </div>
+            <div class="form-group" ng-if="blade.isNew && blade.currentEntity.clientType === 'confidential'">
+                <button class="btn" type="button" ng-click="downloadCredentials()">{{ 'platform.commands.download' | translate }}</button>
             </div>
 
             <div class="form-group">
                 <label class="form-label">{{ 'platform.blades.oauthapps.labels.type' | translate }}</label>
                 <div class="form-input">
-                    <input ng-model="blade.currentEntity.type" placeholder="{{ 'platform.blades.oauthapps.placeholders.type' | translate }}" readonly>
+                    <ui-select ng-model="blade.currentEntity.clientType" on-select="setClientType($item)" ng-disabled="!blade.isNew">
+                        <ui-select-match>{{ 'platform.blades.oauthapps-detail.client-types.' + $select.selected | translate }}</ui-select-match>
+                        <ui-select-choices repeat="x in clientTypes">
+                            <span>{{ 'platform.blades.oauthapps-detail.client-types.' + x | translate }}</span>
+                        </ui-select-choices>
+                    </ui-select>
                 </div>
+                <div class="form-hint" ng-if="blade.currentEntity.clientType">{{ 'platform.blades.oauthapps-detail.client-types.' + blade.currentEntity.clientType + '-description' | translate }}</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">{{ 'platform.blades.oauthapps-detail.labels.applicationType' | translate }}</label>
+                <div class="form-input">
+                    <ui-select ng-model="blade.currentEntity.applicationType">
+                        <ui-select-match placeholder="{{ 'platform.blades.oauthapps-detail.application-types.web' | translate }}">{{ 'platform.blades.oauthapps-detail.application-types.' + $select.selected | translate }}</ui-select-match>
+                        <ui-select-choices repeat="x in applicationTypes">
+                            <span>{{ 'platform.blades.oauthapps-detail.application-types.' + x | translate }}</span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="form-hint">{{ 'platform.blades.oauthapps-detail.application-types.' + (blade.currentEntity.applicationType || 'web') + '-description' | translate }}</div>
             </div>
 
             <div class="form-group">
-                <fieldset>
-                    <legend>
-                        {{ 'platform.blades.oauthapps.labels.redirectUris' | translate }}
-                        <a href="" ng-click="editRedirectUris(blade.currentEntity.redirectUris)" class="form-edit">
-                            <i class="form-ico fa fa-pencil"></i>
-                        </a>
-                    </legend>
-                    <div ng-if="blade.currentEntity.redirectUris.length > 0" class="table-wrapper">
-                        <form name="formScope" class="form">
-                            <table class="table __indexed">
-                                <thead>
-                                    <tr>
-                                        <th class="table-col">{{ 'platform.blades.oauthapps-detail.labels.urls' | translate }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="table-item" ng-repeat="uri in blade.currentEntity.redirectUris track by $index">
-                                        <td class="table-col">
-                                            <div class="form-input">
-                                                <input ng-model="uri" type="text" readonly />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
-                    </div>
-                </fieldset>
+                <label class="form-label">{{ 'platform.blades.oauthapps-detail.labels.consentType' | translate }}</label>
+                <div class="form-input">
+                    <ui-select ng-model="blade.currentEntity.consentType">
+                        <ui-select-match placeholder="{{ 'platform.blades.oauthapps-detail.consent-types.explicit' | translate }}">{{ 'platform.blades.oauthapps-detail.consent-types.' + $select.selected | translate }}</ui-select-match>
+                        <ui-select-choices repeat="x in blade.consentTypes">
+                            <span>{{ 'platform.blades.oauthapps-detail.consent-types.' + x | translate }}</span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="form-hint">{{ 'platform.blades.oauthapps-detail.consent-types.' + (blade.currentEntity.consentType || 'explicit') + '-description' | translate }}</div>
             </div>
+            <div class="form-group">
+                <label class="form-label">{{ 'platform.blades.oauthapps-detail.labels.pkce' | translate }}</label>
+                <div class="form-input">
+                    <label class="form-label __switch">
+                        <input type="checkbox" ng-checked="requiresPkce()" ng-click="togglePkce()">
+                        <span class="switch"></span>
+                    </label>
+                </div>
+                <div class="form-hint">{{ 'platform.blades.oauthapps-detail.descriptions.pkce' | translate }}</div>
+            </div>
+            <div class="note warning" ng-if="blade.currentEntity.clientType === 'public' && !requiresPkce()">{{ 'platform.blades.oauthapps-detail.warnings.no-pkce' | translate }}</div>
 
             <div class="form-group">
-                <fieldset>
-                    <legend>
-                        {{ 'platform.blades.oauthapps.labels.postLogoutRedirectUris' | translate }}
-                        <a href="" ng-click="editPostLogoutRedirectUris(blade.currentEntity.postLogoutRedirectUris)" class="form-edit">
-                            <i class="form-ico fa fa-pencil"></i>
-                        </a>
-                    </legend>
-                    <div ng-if="blade.currentEntity.postLogoutRedirectUris.length > 0" class="table-wrapper">
-                        <form name="formScope" class="form">
-                            <table class="table __indexed">
-                                <thead>
-                                    <tr>
-                                        <th class="table-col">{{ 'platform.blades.oauthapps-detail.labels.urls' | translate }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="table-item" ng-repeat="uri in blade.currentEntity.postLogoutRedirectUris track by $index">
-                                        <td class="table-col">
-                                            <div class="form-input">
-                                                <input ng-model="uri" type="text" readonly />
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
+                <label class="form-label">{{ 'platform.blades.oauthapps-detail.labels.grantTypes' | translate }}</label>
+                <div class="form-input">
+                    <div class="form-control __checkbox" ng-repeat="x in grantTypes">
+                        <label class="form-label">
+                            <input type="checkbox" ng-checked="hasPermission(x)" ng-click="togglePermission(x)">
+                            <span class="check"></span>
+                            <span class="name">{{ 'platform.blades.oauthapps-detail.grant-types.' + x.substring(3) | translate }}</span>
+                        </label>
                     </div>
-                </fieldset>
+                </div>
+                <div class="form-error" ng-if="!hasGrantType()">{{ 'platform.blades.oauthapps-detail.validations.grant-type-required' | translate }}</div>
+            </div>
+            <div class="note warning" ng-if="blade.currentEntity.clientType === 'public' && hasPermission('gt:client_credentials')">{{ 'platform.blades.oauthapps-detail.warnings.public-client-credentials' | translate }}</div>
+
+            <div class="form-group">
+                <label class="form-label">{{ 'platform.blades.oauthapps-detail.labels.scopes' | translate }}</label>
+                <div class="form-input">
+                    <div class="form-control __checkbox" ng-repeat="x in scopes">
+                        <label class="form-label">
+                            <input type="checkbox" ng-checked="hasPermission(x)" ng-click="togglePermission(x)">
+                            <span class="check"></span>
+                            <span class="name">{{ x.substring(4) }}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-hint">{{ 'platform.blades.oauthapps-detail.descriptions.scopes' | translate }}</div>
             </div>
 
+            <fieldset>
+                <legend>{{ 'platform.blades.oauthapps-detail.labels.resources' | translate }}</legend>
+                <div class="form-group">
+                    <div class="form-hint">{{ 'platform.blades.oauthapps-detail.descriptions.resources' | translate }}</div>
+                </div>
+                <div class="table-wrapper" ng-if="blade.resources.length">
+                    <table class="table">
+                        <tbody>
+                            <tr class="table-item" ng-repeat="x in blade.resources track by x.uri">
+                                <td class="table-col">
+                                    <label class="form-control __checkbox">
+                                        <input type="checkbox" ng-checked="selectedResources().indexOf(x.uri) >= 0" ng-click="toggleResource(x.uri)">
+                                        <span class="check"></span>
+                                    </label>
+                                </td>
+                                <td class="table-col" ng-click="toggleResource(x.uri)">
+                                    <span class="table-t">{{ resourceTitle(x) }}</span>
+                                    <span class="table-descr" ng-if="x.title">{{ x.uri }}</span>
+                                    <span class="table-descr" ng-if="!x.isRegistered">{{ 'platform.blades.oauthapps-detail.labels.not-registered' | translate }}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="note" ng-if="!blade.resources.length">{{ 'platform.blades.oauthapps-detail.descriptions.no-resources' | translate }}</p>
+                <div class="form-group">
+                    <label class="form-label">
+                        {{ 'platform.blades.oauthapps-detail.labels.other-resources' | translate }}
+                        <a href="" ng-click="editOtherResources()" class="form-edit"><i class="form-ico fa fa-pencil"></i></a>
+                    </label>
+                    <div ng-if="otherResources().length > 0" class="table-wrapper">
+                        <table class="table __indexed">
+                            <tbody>
+                                <tr class="table-item" ng-repeat="value in otherResources() track by $index">
+                                    <td class="table-col">
+                                        <div class="form-input">
+                                            <input ng-model="value" type="text" readonly />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="note warning" ng-if="unregisteredResources().length">{{ 'platform.blades.oauthapps-detail.warnings.unregistered-resources' | translate:{ resources: unregisteredResources().join(', ') } }}</div>
+            </fieldset>
+
+            <fieldset>
+                <legend>
+                    {{ 'platform.blades.oauthapps.labels.redirectUris' | translate }}
+                    <a href="" ng-click="editRedirectUris()" class="form-edit"><i class="form-ico fa fa-pencil"></i></a>
+                </legend>
+                <div ng-if="blade.currentEntity.redirectUris.length > 0" class="table-wrapper">
+                    <table class="table __indexed">
+                        <tbody>
+                            <tr class="table-item" ng-repeat="value in blade.currentEntity.redirectUris track by $index">
+                                <td class="table-col">
+                                    <div class="form-input">
+                                        <input ng-model="value" type="text" readonly />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-error" ng-repeat="x in uriErrors(blade.currentEntity.redirectUris, blade.origEntity.redirectUris) track by x.uri">{{ 'platform.blades.oauthapps-detail.validations.uri-' + x.problem | translate:{ uri: x.uri } }}</div>
+                <div class="note warning" ng-if="hasPermission('gt:authorization_code') && !blade.currentEntity.redirectUris.length">{{ 'platform.blades.oauthapps-detail.warnings.redirect-required' | translate }}</div>
+            </fieldset>
+
+            <fieldset>
+                <legend>
+                    {{ 'platform.blades.oauthapps.labels.postLogoutRedirectUris' | translate }}
+                    <a href="" ng-click="editPostLogoutRedirectUris()" class="form-edit"><i class="form-ico fa fa-pencil"></i></a>
+                </legend>
+                <div ng-if="blade.currentEntity.postLogoutRedirectUris.length > 0" class="table-wrapper">
+                    <table class="table __indexed">
+                        <tbody>
+                            <tr class="table-item" ng-repeat="value in blade.currentEntity.postLogoutRedirectUris track by $index">
+                                <td class="table-col">
+                                    <div class="form-input">
+                                        <input ng-model="value" type="text" readonly />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-error" ng-repeat="x in uriErrors(blade.currentEntity.postLogoutRedirectUris, blade.origEntity.postLogoutRedirectUris) track by x.uri">{{ 'platform.blades.oauthapps-detail.validations.uri-' + x.problem | translate:{ uri: x.uri } }}</div>
+                <div class="note warning" ng-if="legacyHttpUris().length">{{ 'platform.blades.oauthapps-detail.warnings.legacy-http' | translate:{ uri: legacyHttpUris().join(', ') } }}</div>
+            </fieldset>
+
+            <fieldset ng-if="otherPermissions().length">
+                <legend>
+                    {{ 'platform.blades.oauthapps-detail.labels.other-permissions' | translate }}
+                    <a href="" ng-click="editOtherPermissions()" class="form-edit"><i class="form-ico fa fa-pencil"></i></a>
+                </legend>
+                <div class="form-group">
+                    <div class="form-hint">{{ 'platform.blades.oauthapps-detail.descriptions.other-permissions' | translate }}</div>
+                </div>
+                <div ng-if="otherPermissions().length > 0" class="table-wrapper">
+                    <table class="table __indexed">
+                        <tbody>
+                            <tr class="table-item" ng-repeat="value in otherPermissions() track by $index">
+                                <td class="table-col">
+                                    <div class="form-input">
+                                        <input ng-model="value" type="text" readonly />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
         </div>
     </div>
 </div>
+

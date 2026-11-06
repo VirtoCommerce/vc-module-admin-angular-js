@@ -546,7 +546,17 @@
         "subtitle": "Servicio de seguridad",
         "labels": {
           "clientSecret-warning": "¡Advertencia! Debes copiar el secreto ahora. Se ocultará después de cerrar el panel",
-          "urls": "URLs"
+          "urls": "URLs",
+          "applicationType": "Tipo de aplicación",
+          "consentType": "Consentimiento",
+          "pkce": "Requerir PKCE",
+          "grantTypes": "Tipos de concesión",
+          "scopes": "Ámbitos",
+          "resources": "Recursos (puntos de conexión MCP y API)",
+          "mcp-endpoint": "MCP: {{title}}",
+          "not-registered": "No está en Authorization:Resources",
+          "other-resources": "Otros recursos",
+          "other-permissions": "Otros permisos"
         },
         "blades": {
           "edit-redirectUris": {
@@ -556,7 +566,65 @@
           "edit-postLogoutRedirectUris": {
             "title": "URIs de redirección post-cierre de sesión",
             "subtitle": "Gestionar URIs de redirección post-cierre de sesión"
+          },
+          "edit-resources": {
+            "title": "Otros recursos",
+            "subtitle": "Gestionar los recursos de la aplicación"
+          },
+          "edit-permissions": {
+            "title": "Otros permisos",
+            "subtitle": "Gestionar los permisos que esta pantalla no edita"
           }
+        },
+        "descriptions": {
+          "pkce": "La aplicación demuestra el inicio de sesión con un verificador de código (RFC 7636), como exige la especificación MCP",
+          "scopes": "openid y offline_access siempre están permitidos",
+          "resources": "Los recursos para los que la aplicación puede pedir un token (RFC 8707). Un agente de IA necesita el punto de conexión MCP al que se conecta, tal como está escrito en el agente.",
+          "no-resources": "La plataforma no muestra ningún recurso: añádalos en Authorization:Resources o instale los módulos que ofrecen puntos de conexión MCP.",
+          "other-permissions": "Permisos que esta pantalla no edita; se conservan tal cual. Los permisos de los puntos de conexión siguen los tipos de concesión."
+        },
+        "client-types": {
+          "public": "Público",
+          "public-description": "Sin secreto: un agente de IA o una aplicación de escritorio, móvil o de navegador",
+          "confidential": "Confidencial",
+          "confidential-description": "Guarda un secreto del cliente en un servidor; no se puede cambiar después de crear la aplicación"
+        },
+        "application-types": {
+          "web": "Web",
+          "web-description": "Los URI de redirección deben coincidir exactamente",
+          "native": "Nativa",
+          "native-description": "Una aplicación de escritorio o CLI: un URI de redirección de bucle invertido sin puerto acepta cualquier puerto"
+        },
+        "consent-types": {
+          "explicit": "Explícito",
+          "explicit-description": "El usuario autoriza la aplicación una vez y no se le vuelve a preguntar",
+          "implicit": "Implícito",
+          "implicit-description": "Nunca se pregunta al usuario: para las aplicaciones de confianza de la propia plataforma",
+          "systematic": "Sistemático",
+          "systematic-description": "Se pregunta al usuario en cada inicio de sesión",
+          "external": "Externo",
+          "external-description": "Solo pueden iniciar sesión los usuarios autorizados por un administrador"
+        },
+        "grant-types": {
+          "authorization_code": "Código de autorización",
+          "refresh_token": "Token de actualización",
+          "client_credentials": "Credenciales de cliente",
+          "password": "Contraseña"
+        },
+        "validations": {
+          "clientId-taken": "Otra aplicación ya usa este ID de cliente",
+          "grant-type-required": "Elija al menos un tipo de concesión",
+          "uri-invalid": "{{uri}} no es un URI absoluto",
+          "uri-fragment": "{{uri}} no puede tener un fragmento (#)",
+          "uri-script": "{{uri}} no puede usar un esquema de script (javascript, vbscript, data)",
+          "uri-http": "{{uri}} debe usar HTTPS: HTTP solo se permite para direcciones de bucle invertido como localhost y 127.0.0.1"
+        },
+        "warnings": {
+          "no-pkce": "Un cliente público sin PKCE: un código de autorización robado se puede canjear por un token. Active PKCE salvo que la aplicación no pueda enviarlo.",
+          "public-client-credentials": "Un cliente público no tiene secreto, por lo que no puede usar la concesión de credenciales de cliente.",
+          "unregistered-resources": "No se emite ningún token para {{resources}} hasta que figure en Authorization:Resources de los ajustes de la plataforma.",
+          "redirect-required": "La concesión de código de autorización necesita un URI de redirección.",
+          "legacy-http": "{{uri}} usa HTTP para una dirección que no es de bucle invertido. Se conserva, pero no se puede añadir otro igual."
         }
       },
       "login": {

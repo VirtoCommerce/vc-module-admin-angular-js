@@ -182,6 +182,12 @@
     "validators": {
       "uriWithoutQuery": {
         "error": "Invalid URI format. Ensure the URI doesn't have query parameters"
+      },
+      "redirectUri": {
+        "error": "Use an absolute URI without a fragment, with HTTPS unless it is a loopback address (localhost, 127.0.0.1)"
+      },
+      "absoluteUri": {
+        "error": "Use an absolute URI"
       }
     },
     "errors": {

@@ -182,6 +182,12 @@
     "validators": {
       "uriWithoutQuery": {
         "error": "Ugyldig URI-format. Sørg for at URI ikke har spørringsparametere"
+      },
+      "redirectUri": {
+        "error": "Bruk en absolutt URI uten fragment, med HTTPS med mindre det er en loopback-adresse (localhost, 127.0.0.1)"
+      },
+      "absoluteUri": {
+        "error": "Bruk en absolutt URI"
       }
     },
     "errors": {

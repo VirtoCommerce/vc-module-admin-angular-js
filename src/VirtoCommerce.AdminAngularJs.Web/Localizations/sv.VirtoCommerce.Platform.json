@@ -547,7 +547,17 @@
         "subtitle": "Säkerhetstjänst",
         "labels": {
           "clientSecret-warning": "Varning! Du måste kopiera hemligheten nu. Den kommer att döljas efter att bladet stängs",
-          "urls": "URL:er"
+          "urls": "URL:er",
+          "applicationType": "Applikationstyp",
+          "consentType": "Samtycke",
+          "pkce": "Kräv PKCE",
+          "grantTypes": "Beviljandetyper",
+          "scopes": "Omfång",
+          "resources": "Resurser (MCP-slutpunkter och API:er)",
+          "mcp-endpoint": "MCP: {{title}}",
+          "not-registered": "Finns inte i Authorization:Resources",
+          "other-resources": "Andra resurser",
+          "other-permissions": "Andra behörigheter"
         },
         "blades": {
           "edit-redirectUris": {
@@ -557,7 +567,65 @@
           "edit-postLogoutRedirectUris": {
             "title": "URI:er för omdirigering efter utloggning",
             "subtitle": "Hantera URI:er för omdirigering efter utloggning"
+          },
+          "edit-resources": {
+            "title": "Andra resurser",
+            "subtitle": "Hantera applikationens resurser"
+          },
+          "edit-permissions": {
+            "title": "Andra behörigheter",
+            "subtitle": "Hantera behörigheter som den här vyn inte redigerar"
           }
+        },
+        "descriptions": {
+          "pkce": "Applikationen bevisar inloggningen med en kodverifierare (RFC 7636), som MCP-specifikationen kräver",
+          "scopes": "openid och offline_access är alltid tillåtna",
+          "resources": "Resurserna som applikationen får begära en token för (RFC 8707). En AI-agent behöver MCP-slutpunkten den ansluter till, exakt som den är inskriven i agenten.",
+          "no-resources": "Plattformen listar inga resurser: lägg till dem i Authorization:Resources eller installera modulerna som tillhandahåller MCP-slutpunkter.",
+          "other-permissions": "Behörigheter som den här vyn inte redigerar behålls som de är. Slutpunktsbehörigheter följer beviljandetyperna."
+        },
+        "client-types": {
+          "public": "Offentlig",
+          "public-description": "Ingen hemlighet: en AI-agent eller en skrivbords-, mobil- eller webbläsarapp",
+          "confidential": "Konfidentiell",
+          "confidential-description": "Förvarar en klienthemlighet på en server; kan inte ändras efter att applikationen har skapats"
+        },
+        "application-types": {
+          "web": "Webb",
+          "web-description": "Omdirigerings-URI:er måste matcha exakt",
+          "native": "Nativ",
+          "native-description": "En skrivbords- eller CLI-app: en loopback-omdirigerings-URI utan port accepterar valfri port"
+        },
+        "consent-types": {
+          "explicit": "Explicit",
+          "explicit-description": "Användaren godkänner applikationen en gång och tillfrågas sedan inte igen",
+          "implicit": "Implicit",
+          "implicit-description": "Användaren tillfrågas aldrig: för plattformens egna betrodda applikationer",
+          "systematic": "Systematiskt",
+          "systematic-description": "Användaren tillfrågas vid varje inloggning",
+          "external": "Externt",
+          "external-description": "Endast användare som en administratör har auktoriserat kan logga in"
+        },
+        "grant-types": {
+          "authorization_code": "Auktoriseringskod",
+          "refresh_token": "Uppdateringstoken",
+          "client_credentials": "Klientautentiseringsuppgifter",
+          "password": "Lösenord"
+        },
+        "validations": {
+          "clientId-taken": "En annan applikation använder redan detta klient-ID",
+          "grant-type-required": "Välj minst en beviljandetyp",
+          "uri-invalid": "{{uri}} är inte en absolut URI",
+          "uri-fragment": "{{uri}} får inte innehålla ett fragment (#)",
+          "uri-script": "{{uri}} kan inte använda ett skriptschema (javascript, vbscript, data)",
+          "uri-http": "{{uri}} måste använda HTTPS: HTTP tillåts endast för loopback-adresser som localhost och 127.0.0.1"
+        },
+        "warnings": {
+          "no-pkce": "En offentlig klient utan PKCE: en stulen auktoriseringskod kan bytas mot en token. Aktivera PKCE, utom om applikationen inte kan skicka det.",
+          "public-client-credentials": "En offentlig klient har ingen hemlighet och kan därför inte använda beviljandet klientautentiseringsuppgifter.",
+          "unregistered-resources": "Ingen token utfärdas för {{resources}} förrän den finns i Authorization:Resources i plattformsinställningarna.",
+          "redirect-required": "Beviljandet auktoriseringskod kräver en omdirigerings-URI.",
+          "legacy-http": "{{uri}} använder HTTP för en adress som inte är en loopback-adress. Den behålls, men en ny av samma slag kan inte läggas till."
         }
       },
       "login": {

@@ -546,7 +546,17 @@
         "subtitle": "Usługa bezpieczeństwa",
         "labels": {
           "clientSecret-warning": "Uwaga! Musisz skopiować sekret teraz. Zostanie on ukryty po zamknięciu panelu",
-          "urls": "URL-e"
+          "urls": "URL-e",
+          "applicationType": "Typ aplikacji",
+          "consentType": "Zgoda",
+          "pkce": "Wymagaj PKCE",
+          "grantTypes": "Typy grantów",
+          "scopes": "Zakresy",
+          "resources": "Zasoby (punkty końcowe MCP i API)",
+          "mcp-endpoint": "MCP: {{title}}",
+          "not-registered": "Brak w Authorization:Resources",
+          "other-resources": "Inne zasoby",
+          "other-permissions": "Inne uprawnienia"
         },
         "blades": {
           "edit-redirectUris": {
@@ -556,7 +566,65 @@
           "edit-postLogoutRedirectUris": {
             "title": "URI przekierowania po wylogowaniu",
             "subtitle": "Zarządzaj URI przekierowania po wylogowaniu"
+          },
+          "edit-resources": {
+            "title": "Inne zasoby",
+            "subtitle": "Zarządzaj zasobami aplikacji"
+          },
+          "edit-permissions": {
+            "title": "Inne uprawnienia",
+            "subtitle": "Zarządzaj uprawnieniami, których ten ekran nie edytuje"
           }
+        },
+        "descriptions": {
+          "pkce": "Aplikacja potwierdza logowanie weryfikatorem kodu (RFC 7636), zgodnie z wymaganiem specyfikacji MCP",
+          "scopes": "openid i offline_access są zawsze dozwolone",
+          "resources": "Zasoby, dla których aplikacja może żądać tokenu (RFC 8707). Agent AI potrzebuje punktu końcowego MCP, z którym się łączy, dokładnie w takiej postaci, w jakiej wpisano go w agencie.",
+          "no-resources": "Platforma nie zawiera żadnych zasobów: dodaj je w Authorization:Resources lub zainstaluj moduły udostępniające punkty końcowe MCP.",
+          "other-permissions": "Uprawnienia, których ten ekran nie edytuje, pozostają bez zmian. Uprawnienia punktów końcowych wynikają z typów grantów."
+        },
+        "client-types": {
+          "public": "Publiczny",
+          "public-description": "Bez sekretu: agent AI, aplikacja desktopowa, mobilna lub przeglądarkowa",
+          "confidential": "Poufny",
+          "confidential-description": "Przechowuje sekret klienta na serwerze; nie można tego zmienić po utworzeniu aplikacji"
+        },
+        "application-types": {
+          "web": "Webowa",
+          "web-description": "URI przekierowania muszą być dokładnie zgodne",
+          "native": "Natywna",
+          "native-description": "Aplikacja desktopowa lub CLI: URI przekierowania loopback bez portu akceptuje dowolny port"
+        },
+        "consent-types": {
+          "explicit": "Jawna",
+          "explicit-description": "Użytkownik zezwala aplikacji raz i nie jest pytany ponownie",
+          "implicit": "Niejawna",
+          "implicit-description": "Użytkownik nigdy nie jest pytany: dla zaufanych aplikacji samej platformy",
+          "systematic": "Systematyczna",
+          "systematic-description": "Użytkownik jest pytany przy każdym logowaniu",
+          "external": "Zewnętrzna",
+          "external-description": "Zalogować się mogą tylko użytkownicy autoryzowani przez administratora"
+        },
+        "grant-types": {
+          "authorization_code": "Kod autoryzacji",
+          "refresh_token": "Token odświeżania",
+          "client_credentials": "Poświadczenia klienta",
+          "password": "Hasło"
+        },
+        "validations": {
+          "clientId-taken": "Inna aplikacja używa już tego ID klienta",
+          "grant-type-required": "Wybierz co najmniej jeden typ grantu",
+          "uri-invalid": "{{uri}} nie jest bezwzględnym URI",
+          "uri-fragment": "{{uri}} nie może zawierać fragmentu (#)",
+          "uri-script": "{{uri}} nie może używać schematu skryptu (javascript, vbscript, data)",
+          "uri-http": "{{uri}} musi używać HTTPS: HTTP jest dozwolony tylko dla adresów loopback, takich jak localhost i 127.0.0.1"
+        },
+        "warnings": {
+          "no-pkce": "Klient publiczny bez PKCE: skradziony kod autoryzacji można wymienić na token. Włącz PKCE, chyba że aplikacja nie może go wysłać.",
+          "public-client-credentials": "Klient publiczny nie ma sekretu, więc nie może używać grantu poświadczeń klienta.",
+          "unregistered-resources": "Token dla {{resources}} nie zostanie wydany, dopóki nie znajdzie się w Authorization:Resources w ustawieniach platformy.",
+          "redirect-required": "Grant kodu autoryzacji wymaga URI przekierowania.",
+          "legacy-http": "{{uri}} używa HTTP dla adresu, który nie jest adresem loopback. Zostaje zachowany, ale nie można dodać nowego takiego URI."
         }
       },
       "login": {

@@ -548,7 +548,17 @@
         "subtitle": "Security service",
         "labels": {
           "clientSecret-warning": "Warning! You must copy the secret now. It will be hidden after closing the blade",
-          "urls": "URLs"
+          "urls": "URLs",
+          "applicationType": "Application type",
+          "consentType": "Consent",
+          "pkce": "Require PKCE",
+          "grantTypes": "Grant types",
+          "scopes": "Scopes",
+          "resources": "Resources (MCP endpoints and APIs)",
+          "mcp-endpoint": "MCP: {{title}}",
+          "not-registered": "Not in Authorization:Resources",
+          "other-resources": "Other resources",
+          "other-permissions": "Other permissions"
         },
         "blades": {
           "edit-redirectUris": {
@@ -558,7 +568,65 @@
           "edit-postLogoutRedirectUris": {
             "title": "Post logout redirect URIs",
             "subtitle": "Manage post logout redirect URIs"
+          },
+          "edit-resources": {
+            "title": "Other resources",
+            "subtitle": "Manage the resources of the application"
+          },
+          "edit-permissions": {
+            "title": "Other permissions",
+            "subtitle": "Manage the permissions this screen doesn't edit"
           }
+        },
+        "descriptions": {
+          "pkce": "The application proves the sign-in with a code verifier (RFC 7636), as the MCP specification requires",
+          "scopes": "openid and offline_access are always allowed",
+          "resources": "The resources the application may ask a token for (RFC 8707). An AI agent needs the MCP endpoint it connects to, exactly as it is typed in the agent.",
+          "no-resources": "The platform lists no resources: add them in Authorization:Resources, or install the modules that serve MCP endpoints.",
+          "other-permissions": "Permissions this screen doesn't edit, kept as they are. Endpoint permissions follow the grant types."
+        },
+        "client-types": {
+          "public": "Public",
+          "public-description": "No secret: an AI agent, a desktop, mobile or browser app",
+          "confidential": "Confidential",
+          "confidential-description": "Keeps a client secret on a server; can't be changed after the application is created"
+        },
+        "application-types": {
+          "web": "Web",
+          "web-description": "Redirect URIs must match exactly",
+          "native": "Native",
+          "native-description": "A desktop or CLI app: a loopback redirect URI without a port accepts any port"
+        },
+        "consent-types": {
+          "explicit": "Explicit",
+          "explicit-description": "The user allows the application once, then is not asked again",
+          "implicit": "Implicit",
+          "implicit-description": "The user is never asked: use for the platform's own trusted applications",
+          "systematic": "Systematic",
+          "systematic-description": "The user is asked at every sign-in",
+          "external": "External",
+          "external-description": "Only users an administrator authorized can sign in"
+        },
+        "grant-types": {
+          "authorization_code": "Authorization code",
+          "refresh_token": "Refresh token",
+          "client_credentials": "Client credentials",
+          "password": "Password"
+        },
+        "validations": {
+          "clientId-taken": "Another application already uses this client ID",
+          "grant-type-required": "Pick at least one grant type",
+          "uri-invalid": "{{uri}} is not an absolute URI",
+          "uri-fragment": "{{uri}} can't have a fragment (#)",
+          "uri-script": "{{uri}} can't use a script scheme (javascript, vbscript, data)",
+          "uri-http": "{{uri}} must use HTTPS: HTTP is allowed only for loopback addresses such as localhost and 127.0.0.1"
+        },
+        "warnings": {
+          "no-pkce": "A public client without PKCE: a stolen authorization code can be exchanged for a token. Turn on PKCE unless the application can't send it.",
+          "public-client-credentials": "A public client has no secret, so it can't use the client credentials grant.",
+          "unregistered-resources": "No token is issued for {{resources}} until it is listed in Authorization:Resources of the platform settings.",
+          "redirect-required": "The authorization code grant needs a redirect URI.",
+          "legacy-http": "{{uri}} uses HTTP for an address that is not a loopback address. It is kept, but a new one like it can't be added."
         }
       },
       "login": {
