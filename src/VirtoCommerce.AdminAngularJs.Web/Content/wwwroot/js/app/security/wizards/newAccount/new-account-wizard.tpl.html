@@ -48,7 +48,7 @@
                    placeholder="{{ 'platform.blades.new-account-wizard.placeholders.repeat-password' | translate }}"
                    type="password"
                    ui-validate="'$value == blade.currentEntity.password'"
-                   ui-validate-watch="blade.currentEntity.password">
+                   ui-validate-watch="'blade.currentEntity.password'">
           </div>
           <div class="form-error" ng-if="formScope.passwordConfirmation.$dirty && blade.currentEntity.password != blade.currentEntity.newPassword2">
             <span>{{ 'platform.blades.new-account-wizard.validations.repeat-password' | translate }}</span>
