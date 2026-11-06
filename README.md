@@ -16,6 +16,10 @@ It works alone, or next to [Admin Shell](https://github.com/VirtoCommerce/vc-mod
 * **Turn off without uninstalling:** `VirtoCommerce:PlatformUI:Enable = false` keeps the page closed; the API is not affected.
 * **No database, no settings, no permissions** of its own. Who may sign in is the platform's admin UI access policy (`VirtoCommerce:PlatformUI:Access`).
 
+## Screenshots
+
+<img width="1916" height="955" alt="image" src="https://github.com/user-attachments/assets/9fbacc7f-a7b6-4bf8-9b24-08dec3d39820" />
+
 ## Configuration
 
 ### Site root
