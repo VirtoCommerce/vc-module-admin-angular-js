@@ -19,8 +19,14 @@ angular.module('platformWebApp')
                 initializeBlade();
             });
 
+            // The name of a list item by its code, the code itself when the list doesn't have it (yet)
             var getNameByCode = function (entities, entity) {
-                return entities && entity ? _.find(entities, { id: entity }).name : entity;
+                if (!entities || !entity) {
+                    return entity;
+                }
+                var code = String(entity).toLowerCase();
+                var item = _.find(entities, function (x) { return String(x.id).toLowerCase() === code; });
+                return item ? item.name : entity;
             };
 
             function initializeBlade() {
@@ -52,8 +58,11 @@ angular.module('platformWebApp')
                     blade.isLoading = isLoading();
                 });
 
-                $scope.timeZones = timeZones.query();
-                blade.currentTimeZone = getNameByCode($scope.timeZones, blade.currentTimeZone);
+                // the platform's list of time zones
+                timeZones.load().then(function () {
+                    $scope.timeZones = timeZones.query();
+                    blade.currentTimeZone = getNameByCode($scope.timeZones, i18n.getTimeZone());
+                });
                 blade.currentTimeAgoSettings = userProfile.timeAgoSettings;
                 blade.currentTimeSettings = userProfile.timeSettings;
                 blade.currentMemberId = userProfile.memberId;

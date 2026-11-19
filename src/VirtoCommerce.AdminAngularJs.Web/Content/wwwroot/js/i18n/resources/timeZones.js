@@ -1,13 +1,29 @@
-// Full list of time zones defined in tz database
-// see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+// Time zones defined in tz database (see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+// The list a user picks from is the platform's (api/platform/localization/timezones), the same for every admin UI;
+// moment-timezone applies the picked one.
 angular.module('platformWebApp')
-.factory('platformWebApp.common.timeZones', ['moment', function(moment) {
+.factory('platformWebApp.common.timeZones', ['$http', '$q', 'moment', function ($http, $q, moment) {
+    // ids of the platform's list, once loaded
+    var available;
+    var loading;
+
+    var toItem = function (id) {
+        var utcOffset = result.utcOffset(id);
+        return {
+            id: id,
+            utcOffset: utcOffset,
+            name: '(UTC ' + utcOffset.formatted + ') ' + id
+        };
+    };
+
     var result = {
-        get: function(id) {
-            return _.find(this.query(), function(x) { return x.id.toLowerCase() === id.toLowerCase(); });
+        // Any zone moment-timezone knows, case-insensitively, also one the list doesn't offer
+        get: function (id) {
+            var zone = id ? moment.tz.zone(id) : null;
+            return zone ? toItem(zone.name) : undefined;
         },
         contains: function (id) {
-            return _.some(this.query(), function (x) { return x.id.toLowerCase() === id.toLowerCase(); });
+            return !!(id && moment.tz.zone(id));
         },
         utcOffset: function (id) {
             var offset = moment.tz.zone(id).utcOffset(moment().valueOf());
@@ -27,19 +43,19 @@ angular.module('platformWebApp')
             }
             return { hours: hours, minutes: minutes, formatted: pad(hours, true) + ':' + pad(minutes) };
         },
+        // Loads the platform's list; without it (an older platform, a failed request) query() offers moment-timezone's zones
+        load: function () {
+            loading = loading || $http.get('api/platform/localization/timezones').then(function (response) {
+                available = _.isArray(response.data) && response.data.length ? response.data : undefined;
+            }, function () {
+                loading = undefined;
+            });
+            return loading || $q.resolve();
+        },
         query: function () {
-            // Get time zone from moment list of time zones, append UTC offset to name (UTC ±XX:XX Continent/City) and sort by UTC offset
-            return _.map(moment.tz.names(), function (x) {
-                var utcOffset = result.utcOffset(x);
-                return {
-                    id: x,
-                    utcOffset: utcOffset,
-                    name: '(UTC ' + utcOffset.formatted + ') ' + x
-                };
-            }).sort(function (a, b) {
-                if (!a.utcOffset || !b.utcOffset) {
-                    return !b.utcOffset ? -1 : !a.utcOffset ? 1 : 0;
-                }
+            // Append UTC offset to name (UTC ±XX:XX Continent/City) and sort by UTC offset; zones moment-timezone doesn't know are left out
+            var ids = _.filter(available || moment.tz.names(), function (x) { return !!moment.tz.zone(x); });
+            return _.map(ids, toItem).sort(function (a, b) {
                 return a.utcOffset.hours === b.utcOffset.hours ? a.utcOffset.minutes - b.utcOffset.minutes : a.utcOffset.hours - b.utcOffset.hours;
             });
         }
