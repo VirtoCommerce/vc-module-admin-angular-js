@@ -13,9 +13,9 @@
                     </div>
                 </div>
                 <div class="form-group" ng-if="blade.newApiKey">
-                    <label class="form-label">{{ 'platform.blades.account-api.labels.new-api-key' | translate }}</label>
+                    <label class="form-label" for="accountNewApiKey">{{ 'platform.blades.account-api.labels.new-api-key' | translate }}</label>
                     <div class="form-input">
-                        <input ng-model="blade.newApiKey" id="newApiKey" readonly>
+                        <input ng-model="blade.newApiKey" id="accountNewApiKey" readonly>
                         <button class="btn __ico" type="button" ng-click="copyNewApiKey()" title="{{ 'platform.commands.copy' | translate }}">
                             <i class="btn-ico fas fa-paste"></i>
                         </button>
@@ -23,11 +23,11 @@
                     <div class="note warning">{{ 'platform.blades.account-api.labels.new-api-key-warning' | translate }}</div>
                 </div>
                 <div class="form-group" ng-if="!blade.newApiKey">
-                    <label class="form-label">
+                    <label class="form-label" for="accountApiKey">
                         {{ 'platform.blades.account-api.labels.api-key' | translate }}
                     </label>
                     <div class="form-input">
-                        <input ng-model="blade.currentEntity.apiKey" placeholder="{{ 'platform.blades.account-api.placeholders.api-key' | translate }}" readonly>
+                        <input ng-model="blade.currentEntity.apiKey" id="accountApiKey" ng-attr-placeholder="{{ blade.isNew ? ('platform.blades.account-api.placeholders.api-key' | translate) : undefined }}" readonly>
                     </div>
                     <div class="note" ng-if="blade.isNew">{{ 'platform.blades.account-api.labels.generated-on-save' | translate }}</div>
                 </div>
