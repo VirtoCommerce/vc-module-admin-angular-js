@@ -450,10 +450,13 @@
       "account-api": {
         "labels": {
           "api-key": "API-avain",
-          "is-active": "on aktiivinen"
+          "is-active": "on aktiivinen",
+          "new-api-key": "Uusi API-avain",
+          "new-api-key-warning": "Kopioi avain nyt. Sitä ei tallenneta, eikä sitä näytetä uudelleen.",
+          "generated-on-save": "Avain luodaan, kun tallennat."
         },
         "placeholders": {
-          "api-key": "Syötä API-avain"
+          "api-key": "Luodaan tallennettaessa"
         }
       },
       "role-detail": {
@@ -1122,6 +1125,10 @@
       "api-key-delete": {
         "title": "Poiston vahvistus",
         "message": "Seuraava API-avain poistetaan: '{{name}}'"
+      },
+      "api-key-regenerate": {
+        "title": "Luo uusi API-avain",
+        "message": "Nykyinen avain lakkaa toimimasta heti. Sitä käyttävät asiakkaat tarvitsevat uuden avaimen."
       },
       "app-restart": {
         "title": "Sovelluksen sammutus",

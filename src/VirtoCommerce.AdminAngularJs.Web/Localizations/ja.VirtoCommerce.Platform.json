@@ -449,10 +449,13 @@
       "account-api": {
         "labels": {
           "api-key": "APIキー",
-          "is-active": "アクティブ"
+          "is-active": "アクティブ",
+          "new-api-key": "新しい API キー",
+          "new-api-key-warning": "今すぐキーをコピーしてください。キーは保存されず、再表示されません。",
+          "generated-on-save": "キーは保存時に生成されます。"
         },
         "placeholders": {
-          "api-key": "APIキーを入力"
+          "api-key": "保存時に生成"
         }
       },
       "role-detail": {
@@ -1121,6 +1124,10 @@
       "api-key-delete": {
         "title": "削除の確認",
         "message": "次のAPIキーが削除されます: '{{name}}'"
+      },
+      "api-key-regenerate": {
+        "title": "新しい API キーを生成",
+        "message": "現在のキーはすぐに使用できなくなります。このキーを使用しているクライアントには新しいキーが必要です。"
       },
       "app-restart": {
         "title": "アプリケーションのシャットダウン",
