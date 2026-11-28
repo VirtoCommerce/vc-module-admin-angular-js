@@ -301,6 +301,9 @@ fieldset + fieldset
 .form-input .btn.__ico .btn-ico
   font-size: 1.2rem
   line-height: 2rem
+// the icon button lies over the field's right end (45px wide); keep the text clear of it
+.form-input input:has(+ .btn.__ico)
+  padding-right: 50px
 .form-control .form-label
   display: inline-block
   font-size: 11px

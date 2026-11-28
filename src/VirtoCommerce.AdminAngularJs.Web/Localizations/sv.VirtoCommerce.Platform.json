@@ -450,10 +450,13 @@
       "account-api": {
         "labels": {
           "api-key": "API-nyckel",
-          "is-active": "är aktiv"
+          "is-active": "är aktiv",
+          "new-api-key": "Ny API-nyckel",
+          "new-api-key-warning": "Kopiera nyckeln nu. Den lagras inte och visas inte igen.",
+          "generated-on-save": "Nyckeln genereras när du sparar."
         },
         "placeholders": {
-          "api-key": "Ange API-nyckel"
+          "api-key": "Genereras när du sparar"
         }
       },
       "role-detail": {
@@ -1122,6 +1125,10 @@
       "api-key-delete": {
         "title": "Bekräfta radering",
         "message": "Följande API-nyckel kommer att tas bort: '{{name}}'"
+      },
+      "api-key-regenerate": {
+        "title": "Generera en ny API-nyckel",
+        "message": "Den nuvarande nyckeln slutar fungera direkt. Klienter som använder den behöver den nya nyckeln."
       },
       "app-restart": {
         "title": "Applikationsavstängning",

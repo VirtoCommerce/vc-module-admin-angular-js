@@ -451,10 +451,13 @@
       "account-api": {
         "labels": {
           "api-key": "API key",
-          "is-active": "is active"
+          "is-active": "is active",
+          "new-api-key": "New API key",
+          "new-api-key-warning": "Copy the key now. It is not stored and will not be shown again.",
+          "generated-on-save": "The key is generated when you save."
         },
         "placeholders": {
-          "api-key": "Enter API key"
+          "api-key": "Generated on save"
         }
       },
       "role-detail": {
@@ -1123,6 +1126,10 @@
       "api-key-delete": {
         "title": "Delete confirmation",
         "message": "The following API key will be deleted: '{{name}}'"
+      },
+      "api-key-regenerate": {
+        "title": "Generate a new API key",
+        "message": "The current key stops working at once. Clients that use it need the new key."
       },
       "app-restart": {
         "title": "Application shutdown",

@@ -450,10 +450,13 @@
       "account-api": {
         "labels": {
           "api-key": "API-nøkkel",
-          "is-active": "er aktiv"
+          "is-active": "er aktiv",
+          "new-api-key": "Ny API-nøkkel",
+          "new-api-key-warning": "Kopier nøkkelen nå. Den lagres ikke og vises ikke igjen.",
+          "generated-on-save": "Nøkkelen genereres når du lagrer."
         },
         "placeholders": {
-          "api-key": "Angi API-nøkkel"
+          "api-key": "Genereres ved lagring"
         }
       },
       "role-detail": {
@@ -1122,6 +1125,10 @@
       "api-key-delete": {
         "title": "Bekreft sletting",
         "message": "Følgende API-nøkkel vil bli slettet: '{{name}}'"
+      },
+      "api-key-regenerate": {
+        "title": "Generer en ny API-nøkkel",
+        "message": "Den nåværende nøkkelen slutter å virke umiddelbart. Klienter som bruker den, trenger den nye nøkkelen."
       },
       "app-restart": {
         "title": "Applikasjonsavslutning",

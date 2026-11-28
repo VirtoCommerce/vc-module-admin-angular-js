@@ -451,10 +451,13 @@
       "account-api": {
         "labels": {
           "api-key": "API-Schlüssel",
-          "is-active": "ist aktiv"
+          "is-active": "ist aktiv",
+          "new-api-key": "Neuer API-Schlüssel",
+          "new-api-key-warning": "Kopieren Sie den Schlüssel jetzt. Er wird nicht gespeichert und nicht erneut angezeigt.",
+          "generated-on-save": "Der Schlüssel wird beim Speichern generiert."
         },
         "placeholders": {
-          "api-key": "API-Schlüssel eingeben"
+          "api-key": "Wird beim Speichern generiert"
         }
       },
       "role-detail": {
@@ -1123,6 +1126,10 @@
       "api-key-delete": {
         "title": "Löschen bestätigen",
         "message": "Der folgende API-Schlüssel wird gelöscht: '{{name}}'"
+      },
+      "api-key-regenerate": {
+        "title": "Neuen API-Schlüssel generieren",
+        "message": "Der aktuelle Schlüssel funktioniert sofort nicht mehr. Clients, die ihn verwenden, benötigen den neuen Schlüssel."
       },
       "app-restart": {
         "title": "Anwendungsbeendigung",

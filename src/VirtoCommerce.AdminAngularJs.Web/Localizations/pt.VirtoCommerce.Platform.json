@@ -449,10 +449,13 @@
       "account-api": {
         "labels": {
           "api-key": "Chave API",
-          "is-active": "está ativa"
+          "is-active": "está ativa",
+          "new-api-key": "Nova chave de API",
+          "new-api-key-warning": "Copie a chave agora. Ela não é armazenada e não será exibida novamente.",
+          "generated-on-save": "A chave é gerada ao salvar."
         },
         "placeholders": {
-          "api-key": "Digite a chave API"
+          "api-key": "Gerada ao salvar"
         }
       },
       "role-detail": {
@@ -1121,6 +1124,10 @@
       "api-key-delete": {
         "title": "Confirmação de exclusão",
         "message": "A seguinte chave API será eliminada: '{{name}}'"
+      },
+      "api-key-regenerate": {
+        "title": "Gerar uma nova chave de API",
+        "message": "A chave atual deixa de funcionar imediatamente. Os clientes que a usam precisam da nova chave."
       },
       "app-restart": {
         "title": "Encerramento da aplicação",

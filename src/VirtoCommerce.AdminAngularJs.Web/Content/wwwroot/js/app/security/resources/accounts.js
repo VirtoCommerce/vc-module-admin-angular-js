@@ -12,7 +12,9 @@ angular.module('platformWebApp').factory('platformWebApp.accounts', ['$resource'
         unlock: { url: 'api/platform/security/users/:id/unlock', method: 'POST' },
         lock: { url: 'api/platform/security/users/:id/lock', method: 'POST' },
         getUserApiKeys: { url: 'api/platform/security/users/:id/apikeys', method: 'GET', isArray: true },
-        saveUserApiKey: { url: 'api/platform/security/users/apikeys', method: 'POST' },
+        // Returns the saved keys; a key's value is in it only when the save created or replaced the key.
+        saveUserApiKey: { url: 'api/platform/security/users/apikeys', method: 'POST', isArray: true },
+        regenerateUserApiKey: { url: 'api/platform/security/users/apikeys/:keyId/regenerate', method: 'POST' },
         deleteUserApiKey: { url: 'api/platform/security/users/apikeys', method: 'DELETE' },
         verifyEmail: { url: 'api/platform/security/users/:userId/sendVerificationEmail', method: 'POST' },
         passwordChangeEnabled: { url: 'api/platform/security/passwordchangeenabled', method: 'GET' },

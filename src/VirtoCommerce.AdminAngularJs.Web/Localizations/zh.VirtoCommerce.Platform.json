@@ -449,10 +449,13 @@
       "account-api": {
         "labels": {
           "api-key": "API 密钥",
-          "is-active": "是否激活"
+          "is-active": "是否激活",
+          "new-api-key": "新 API 密钥",
+          "new-api-key-warning": "请立即复制密钥。密钥不会被保存，也不会再次显示。",
+          "generated-on-save": "密钥将在保存时生成。"
         },
         "placeholders": {
-          "api-key": "输入 API 密钥"
+          "api-key": "保存时生成"
         }
       },
       "role-detail": {
@@ -1121,6 +1124,10 @@
       "api-key-delete": {
         "title": "删除确认",
         "message": "以下API密钥将被删除：'{{name}}'"
+      },
+      "api-key-regenerate": {
+        "title": "生成新的 API 密钥",
+        "message": "当前密钥将立即失效。使用该密钥的客户端需要新密钥。"
       },
       "app-restart": {
         "title": "应用程序关闭",
